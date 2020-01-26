@@ -35,7 +35,7 @@
         <Button x:Name="loginBtn" Content="Авторизоваться" Height="42" Margin="70,144,70,0" VerticalAlignment="Top" FontSize="14" Background="#FF305174" Foreground="White" BorderBrush="{x:Null}" Style="{DynamicResource RoundYgl}" Cursor="Hand" Grid.Row="1" Grid.Column="1"/>
         <local:UserControlWindows x:Name="Control" Grid.Column="1" HorizontalAlignment="Left" Height="41" Margin="216,0,0,0" VerticalAlignment="Top" Width="318"/>
         <Label x:Name="errorLabel" Content="Введите пароль" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="70,105,0,0" Grid.Row="1" VerticalAlignment="Top" Width="394" FontSize="14" Foreground="#FFD30000" FontFamily="Tunga" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Tag="Забыли пароль?" Height="30" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="White" Grid.Column="1" Margin="70,196,70,10" Grid.Row="1" FontSize="14" Cursor="Hand" Style="{DynamicResource maxOpacity}">
+        <Label Tag="Нет аккаунта? Зарегистрируйтесь" Height="30" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="White" Grid.Column="1" Margin="70,196,70,10" Grid.Row="1" FontSize="14" Cursor="Hand" Style="{DynamicResource maxOpacity}">
             <TextBlock TextDecorations="Underline" 
                Text="{Binding Path=Tag, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Label}}}" />
         </Label>
