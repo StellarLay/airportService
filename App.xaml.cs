@@ -13,5 +13,10 @@ namespace AirportService
     /// </summary>
     public partial class App : Application
     {
+        // Нужен для того, чтобы при вызове Application.Current.Shutdown(); форма закрывалась
+        public App()
+        {
+            this.ShutdownMode = ShutdownMode.OnLastWindowClose;
+        }
     }
 }

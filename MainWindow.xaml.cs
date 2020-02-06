@@ -66,5 +66,13 @@ namespace AirportService
         {
             this.DragMove();
         }
+
+        // клик по тексту "Нет аккаунта? Зарегистрируйтесь"
+        private void TextBlock_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Registration form = new Registration();
+            form.Show();
+            this.Hide();
+        }
     }
 }

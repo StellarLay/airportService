@@ -33,13 +33,17 @@ namespace AirportService
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Information) == MessageBoxResult.Yes)
             {
-                Window.GetWindow(this).Close();
+                // закрываем текущую форму и всё app
+                Application.Current.Shutdown();
             }
         }
         // Кнопка "Свернуть"
         private void minBtn_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+            //Получаем текущее активное окно, а затем при клике скрываем его
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+            window.WindowState = WindowState.Minimized;
+            //MessageBox.Show(window.ToString());
         }
     }
 }
