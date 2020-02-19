@@ -6,150 +6,151 @@
         xmlns:local="clr-namespace:AirportService"
         mc:Ignorable="d"
         Title="Регистрация" Height="600" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="True">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="41*"/>
-            <RowDefinition Height="460*"/>
-        </Grid.RowDefinitions>
-        <local:UserControlWindows Height="40" VerticalAlignment="Top" Width="360" HorizontalAlignment="Right"/>
-        <Label x:Name="regLabel" Content="Регистрация" HorizontalAlignment="Center" Height="34" Margin="10,0" VerticalAlignment="Top" Width="340" FontSize="20" FontFamily="Rockwell Extra Bold" Foreground="White" Opacity="0.9" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Background="Transparent" Grid.Row="1"/>
-        <Label x:Name="nameLabel" Content="Имя" Height="31" Margin="30,61,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-        <TextBox x:Name="nameInput" Height="35" Margin="30,92,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1" >
-            <TextBox.Background>
-                <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
-            </TextBox.Background>
-            <TextBox.Resources>
-                <Style TargetType="TextBox">
-                    <Setter Property="Opacity" Value="0.6"></Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" Value="1" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-                <ControlTemplate x:Key="inputBtn" TargetType="{x:Type TextBox}">
-                    <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
-                        <ScrollViewer x:Name="PART_ContentHost"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsFocused" Value="true">
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="Aqua"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </TextBox.Resources>
-        </TextBox>
-        <Label x:Name="surnameLabel" Content="Фамилия" Height="31" Margin="30,132,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-        <Label x:Name="phoneLabel" Content="Телефон" Height="31" Margin="30,203,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-        <Label x:Name="passLabel" Content="Пароль" Height="30" Margin="30,274,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-        <Label x:Name="confirmPassLabel" Content="Повторите пароль" Height="31" Margin="30,345,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-        <TextBox x:Name="surnameInput" Height="35" Margin="30,163,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type TextBox}">
-                    <Setter Property="Opacity" Value="0.6"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" Value="1" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-                <ControlTemplate x:Key="inputBtn" TargetType="{x:Type TextBox}">
-                    <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
-                        <ScrollViewer x:Name="PART_ContentHost"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsFocused" Value="true">
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="Aqua"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </TextBox.Resources>
-            <TextBox.Background>
-                <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
-            </TextBox.Background>
-        </TextBox>
-        <TextBox x:Name="phoneInput" Height="35" Margin="30,234,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type TextBox}">
-                    <Setter Property="Opacity" Value="0.6"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" Value="1" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-                <ControlTemplate x:Key="inputBtn" TargetType="{x:Type TextBox}">
-                    <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
-                        <ScrollViewer x:Name="PART_ContentHost"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsFocused" Value="true">
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="Aqua"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </TextBox.Resources>
-            <TextBox.Background>
-                <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
-            </TextBox.Background>
-        </TextBox>
-        <TextBox x:Name="passInput" Height="35" Margin="30,304,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type TextBox}">
-                    <Setter Property="Opacity" Value="0.6"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" Value="1" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-                <ControlTemplate x:Key="inputBtn" TargetType="{x:Type TextBox}">
-                    <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
-                        <ScrollViewer x:Name="PART_ContentHost"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsFocused" Value="true">
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="Aqua"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </TextBox.Resources>
-            <TextBox.Background>
-                <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
-            </TextBox.Background>
-        </TextBox>
-        <TextBox x:Name="confirmPassInput" Height="35" Margin="30,376,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type TextBox}">
-                    <Setter Property="Opacity" Value="0.6"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" Value="1" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-                <ControlTemplate x:Key="inputBtn" TargetType="{x:Type TextBox}">
-                    <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
-                        <ScrollViewer x:Name="PART_ContentHost"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsFocused" Value="true">
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="Aqua"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </TextBox.Resources>
-            <TextBox.Background>
-                <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
-            </TextBox.Background>
-        </TextBox>
-        <Button x:Name="regBtn" Content="Зарегистрироваться" Height="42" Margin="48,473,48,0" VerticalAlignment="Top" FontSize="16" Background="#FF305174" Foreground="White" BorderBrush="{x:Null}" Style="{DynamicResource RoundYgl}" Cursor="Hand" Grid.Row="1"/>
-        <Label Tag="Авторизация" Height="30" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="White" Margin="48,517,48,4" Grid.Row="1" FontSize="14" Cursor="Hand" Style="{DynamicResource maxOpacity}">
-            <TextBlock TextDecorations="Underline" 
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="41*"/>
+                <RowDefinition Height="460*"/>
+            </Grid.RowDefinitions>
+            <local:UserControlWindows Height="40" VerticalAlignment="Top" Width="360" HorizontalAlignment="Right"/>
+            <Label x:Name="regLabel" Content="Регистрация" HorizontalAlignment="Center" Height="34" Margin="10,0" VerticalAlignment="Top" Width="340" FontSize="20" FontFamily="Rockwell Extra Bold" Foreground="White" Opacity="0.9" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Background="Transparent" Grid.Row="1"/>
+            <Label x:Name="nameLabel" Content="Имя" Height="31" Margin="30,61,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+            <TextBox x:Name="nameInput" Height="35" Margin="30,92,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1" >
+                <TextBox.Background>
+                    <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
+                </TextBox.Background>
+                <TextBox.Resources>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Opacity" Value="0.6"></Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="1" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <ControlTemplate x:Key="inputBtn" TargetType="{x:Type TextBox}">
+                        <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="Aqua"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </TextBox.Resources>
+            </TextBox>
+            <Label x:Name="surnameLabel" Content="Фамилия" Height="31" Margin="30,132,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+            <Label x:Name="phoneLabel" Content="Телефон" Height="31" Margin="30,203,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+            <Label x:Name="passLabel" Content="Пароль" Height="30" Margin="30,274,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+            <Label x:Name="confirmPassLabel" Content="Повторите пароль" Height="31" Margin="30,345,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+            <TextBox x:Name="surnameInput" Height="35" Margin="30,163,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="Opacity" Value="0.6"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="1" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <ControlTemplate x:Key="inputBtn" TargetType="{x:Type TextBox}">
+                        <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="Aqua"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </TextBox.Resources>
+                <TextBox.Background>
+                    <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBox x:Name="phoneInput" Height="35" Margin="30,234,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="Opacity" Value="0.6"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="1" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <ControlTemplate x:Key="inputBtn" TargetType="{x:Type TextBox}">
+                        <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="Aqua"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </TextBox.Resources>
+                <TextBox.Background>
+                    <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBox x:Name="passInput" Height="35" Margin="30,304,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="Opacity" Value="0.6"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="1" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <ControlTemplate x:Key="inputBtn" TargetType="{x:Type TextBox}">
+                        <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="Aqua"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </TextBox.Resources>
+                <TextBox.Background>
+                    <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBox x:Name="confirmPassInput" Height="35" Margin="30,376,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="Opacity" Value="0.6"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="1" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <ControlTemplate x:Key="inputBtn" TargetType="{x:Type TextBox}">
+                        <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="Aqua"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </TextBox.Resources>
+                <TextBox.Background>
+                    <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
+                </TextBox.Background>
+            </TextBox>
+            <Button x:Name="regBtn" Content="Зарегистрироваться" Height="42" Margin="48,473,48,0" VerticalAlignment="Top" FontSize="16" Background="#FF305174" Foreground="White" BorderBrush="{x:Null}" Style="{DynamicResource RoundYgl}" Cursor="Hand" Grid.Row="1"/>
+            <Label Tag="Авторизация" Height="30" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="White" Margin="48,517,48,4" Grid.Row="1" FontSize="14" Cursor="Hand" Style="{DynamicResource maxOpacity}">
+                <TextBlock TextDecorations="Underline" 
                 Text="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type Label}, Mode=FindAncestor}}" />
-        </Label>
-    </Grid>
-    <Window.Resources>
+            </Label>
+        </Grid>
+        <Window.Resources>
 
         <Style x:Key="RoundYgl" TargetType="{x:Type Button}">
             <Setter Property="Opacity" Value="0.7" />

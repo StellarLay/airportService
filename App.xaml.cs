@@ -18,5 +18,12 @@ namespace AirportService
         {
             this.ShutdownMode = ShutdownMode.OnLastWindowClose;
         }
+
+        // Передадим юзера в другую форму
+        public static class My
+        {
+            internal static string username;
+        }
+
     }
 }

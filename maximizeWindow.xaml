@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="AirportService.maximizeWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AirportService"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="BorderlessButton">
+            <Setter Property="Opacity" Value="0.5" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="1" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type Label}" x:Key="labelOpacity">
+            <Setter Property="Opacity" Value="0.5" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="1" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        
+    </UserControl.Resources>
+    <Grid HorizontalAlignment="Right" Width="760" Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="exitBtn" Content="X" HorizontalAlignment="Right" Height="27" Margin="0,6,5,0" VerticalAlignment="Top" Width="23" Background="{x:Null}" FontSize="15" Foreground="White" Style="{DynamicResource BorderlessButton}" Cursor="Hand" HorizontalContentAlignment="Right" PreviewMouseLeftButtonDown="exitBtn_PreviewMouseLeftButtonDown" />
+        <Button x:Name="minBtn" Content="__" HorizontalAlignment="Right" Height="28" Margin="0,0,70,0" VerticalAlignment="Top" Width="17" Background="{x:Null}" FontSize="20" Foreground="White" Style="{DynamicResource BorderlessButton}" Cursor="Hand" BorderThickness="0" PreviewMouseLeftButtonUp="minBtn_PreviewMouseLeftButtonUp" />
+        <Label x:Name="maximizeBtn" Content="" HorizontalAlignment="Left" Margin="706,16,0,0" VerticalAlignment="Top" BorderBrush="#FFE0E0E0" Width="15" Height="10" BorderThickness="1,2,1,1" Padding="1" PreviewMouseLeftButtonDown="Label_PreviewMouseLeftButtonDown" Foreground="White" Style="{DynamicResource labelOpacity}" Cursor="Hand" />
+        <Label x:Name="returnMinimizeBtn" Content="" HorizontalAlignment="Left" Margin="706,16,0,0" VerticalAlignment="Top" BorderBrush="#FFE0E0E0" Width="15" Height="10" BorderThickness="1,1,1,2" Padding="1" Foreground="White" Style="{DynamicResource labelOpacity}" Cursor="Hand" Visibility="Hidden" PreviewMouseLeftButtonDown="returnMinimizeBtn_PreviewMouseLeftButtonDown" />
+    </Grid>
+</UserControl>

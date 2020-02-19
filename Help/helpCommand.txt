@@ -1,0 +1,12 @@
+Текст с ссылкой
+<Label Tag="Нет аккаунта? Зарегистрируйтесь" Height="30" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="White" Grid.Column="1" Margin="70,196,70,10" Grid.Row="1" FontSize="14" Cursor="Hand" Style="{DynamicResource maxOpacity}">
+            <TextBlock TextDecorations="Underline" 
+               Text="{Binding Path=Tag, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Label}}}" />
+        </Label>
+
+
+
+Команды для миграция EF6:
+1 enable-migrations - в консоли NuGet
+2 add-migration <name> - в консоли NuGet
+3 update-database - в консоли NuGet

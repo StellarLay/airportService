@@ -1,4 +1,4 @@
-﻿<Window x:Class="AirportService.MainWindow"
+﻿<Window x:Name="Authorization" x:Class="AirportService.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -30,15 +30,21 @@
                 <SolidColorBrush Color="Transparent"/>
             </Label.Background>
         </Label>
-        <TextBox x:Name="loginText" Height="30" Margin="74,13,74,0" TextWrapping="Wrap" Text="Имя пользователя" VerticalAlignment="Top" FontSize="14" Background="{x:Null}" Padding="1" BorderBrush="White" BorderThickness="0,0,0,1" Foreground="White" Opacity="0.8" FontFamily="Verdana" Grid.Column="1" Grid.Row="1" MouseEnter="loginBtn_MouseEnter" MouseLeave="loginText_MouseLeave"/>
-        <TextBox x:Name="passText" Height="30" Margin="74,70,74,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" FontSize="14" Background="{x:Null}" Padding="1" BorderBrush="White" BorderThickness="0,0,0,1" Foreground="White" Opacity="0.8" FontFamily="Verdana" Grid.Row="1" Grid.Column="1" MouseEnter="passText_MouseEnter" MouseLeave="passText_MouseLeave"/>
-        <Button x:Name="loginBtn" Content="Авторизоваться" Height="42" Margin="70,144,70,0" VerticalAlignment="Top" FontSize="14" Background="#FF305174" Foreground="White" BorderBrush="{x:Null}" Style="{DynamicResource RoundYgl}" Cursor="Hand" Grid.Row="1" Grid.Column="1" />
+        <TextBox x:Name="loginText" Height="30" Margin="74,33,74,0" TextWrapping="Wrap" Text="Имя пользователя" VerticalAlignment="Top" FontSize="14" Background="{x:Null}" Padding="1" BorderBrush="White" BorderThickness="0,0,0,1" Foreground="White" Opacity="0.8" FontFamily="Verdana" Grid.Column="1" Grid.Row="1" MouseEnter="loginBtn_MouseEnter" MouseLeave="loginText_MouseLeave"/>
+        <TextBox x:Name="passText" Height="30" Margin="74,90,74,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" FontSize="14" Background="{x:Null}" Padding="1" BorderBrush="White" BorderThickness="0,0,0,1" Foreground="White" Opacity="0.8" FontFamily="Verdana" Grid.Row="1" Grid.Column="1" MouseEnter="passText_MouseEnter" MouseLeave="passText_MouseLeave"/>
+        <Button x:Name="loginBtn" Content="Авторизоваться" Height="42" Margin="70,170,70,0" VerticalAlignment="Top" FontSize="14" Background="#FF305174" Foreground="White" BorderBrush="{x:Null}" Style="{DynamicResource RoundYgl}" Cursor="Hand" Grid.Row="1" Grid.Column="1" Click="loginBtn_Click" />
         <local:UserControlWindows x:Name="Control" Grid.Column="1" HorizontalAlignment="Left" Height="41" Margin="216,0,0,0" VerticalAlignment="Top" Width="318"/>
-        <Label x:Name="errorLabel" Content="Введите пароль" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="70,105,0,0" Grid.Row="1" VerticalAlignment="Top" Width="394" FontSize="14" Foreground="#FFD30000" FontFamily="Tunga" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Tag="Нет аккаунта? Зарегистрируйтесь" Height="30" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="White" Grid.Column="1" Margin="70,196,70,10" Grid.Row="1" FontSize="14" Cursor="Hand" Style="{DynamicResource maxOpacity}">
-            <TextBlock TextDecorations="Underline" 
-               Text="{Binding Path=Tag, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Label}}}" PreviewMouseLeftButtonDown="TextBlock_PreviewMouseLeftButtonDown" />
-        </Label>
+        <Label x:Name="errorLabel" Content="" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="70,125,0,0" Grid.Row="1" VerticalAlignment="Top" Width="394" FontSize="14" Foreground="#FFE60202" FontFamily="Tunga" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <ProgressBar x:Name="loadingBar" Grid.Column="1" Height="24" Margin="194,179,194,0" Grid.Row="1" VerticalAlignment="Top" Foreground="#FF247581" Background="{x:Null}" Visibility="Hidden" IsIndeterminate="True" >
+            <ProgressBar.BorderBrush>
+                <SolidColorBrush Color="White" Opacity="0.1"/>
+            </ProgressBar.BorderBrush>
+        </ProgressBar>
+        <Image x:Name="errorImg" Grid.Column="1" HorizontalAlignment="Left" Height="16" Margin="151,137,0,0" Grid.Row="1" VerticalAlignment="Top" Width="16" Source="resources/close.png" Visibility="Hidden">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="resources/close.png" Stretch="Uniform" Opacity="0.8"/>
+            </Image.OpacityMask>
+        </Image>
     </Grid>
 
     <Window.Resources>
