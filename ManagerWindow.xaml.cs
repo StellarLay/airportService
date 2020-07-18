@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,8 @@ namespace AirportService
     /// </summary>
     public partial class ManagerWindow : Window
     {
+        AirportServiceEntities dataEntities = new AirportServiceEntities();
+
         public ManagerWindow()
         {
             InitializeComponent();
@@ -82,8 +85,17 @@ namespace AirportService
                 panelItem3.Visibility = Visibility.Hidden;
             }
             rectangleItem1.Visibility = Visibility.Visible;
-            panelItem1.Visibility = Visibility.Visible;
             nameItemLabel.Content = "Бронирование авиабилетов";
+
+            // Загрузим селект боксы
+            var query = from cities in dataEntities.City
+                                        select new { cities.name };
+            item1DepCombo.ItemsSource = query.ToList();
+            item1DepCombo.DisplayMemberPath = "name";
+            item1DepCombo.SelectedIndex = 0;
+            item1DesCombo.ItemsSource = query.ToList();
+            item1DesCombo.DisplayMemberPath = "name";
+            item1DesCombo.SelectedIndex = 0;
         }
 
         // Клик на 2-й итем
@@ -96,7 +108,6 @@ namespace AirportService
                 rectangleItem1.Visibility = Visibility.Hidden;
                 rectangleItem3.Visibility = Visibility.Hidden;
 
-                panelItem1.Visibility = Visibility.Hidden;
                 panelItem3.Visibility = Visibility.Hidden;
             }
             rectangleItem2.Visibility = Visibility.Visible;
@@ -114,12 +125,27 @@ namespace AirportService
                 rectangleItem1.Visibility = Visibility.Hidden;
                 rectangleItem2.Visibility = Visibility.Hidden;
 
-                panelItem1.Visibility = Visibility.Hidden;
                 panelItem2.Visibility = Visibility.Hidden;
             }
             rectangleItem3.Visibility = Visibility.Visible;
             panelItem3.Visibility = Visibility.Visible;
             nameItemLabel.Content = "Список пассажиров";
+        }
+
+        // Клик на кнопку "Найти билеты"
+        private void item1SearchTicket_Click(object sender, RoutedEventArgs e)
+        {
+            var query = from routes in dataEntities.Flights
+                        select new
+                        {
+                            Номер = routes.id,
+                            Дата = routes.date.Day + "." + routes.date.Month + "." + routes.date.Year,
+                            Отправление = routes.deptime.ToString(),
+                            Прибытие = routes.destime.ToString(),
+                            Авиакомпания = routes.airline,
+                            Цена = routes.ticketprice
+                        };
+            item1ResultGrid.ItemsSource = query.ToList();
         }
     }
 }

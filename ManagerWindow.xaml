@@ -46,13 +46,6 @@
                 <SolidColorBrush Color="White" Opacity="0.9"/>
             </Label.Foreground>
         </Label>
-        <Grid x:Name="panelItem1" Grid.Column="1" HorizontalAlignment="Left" Height="519" Grid.Row="1" VerticalAlignment="Top" Width="793" Visibility="Hidden">
-            <Label x:Name="nameItemLabel_Copy" Content="Бронирование авиабилета" VerticalAlignment="Top" Height="82" FontSize="20" VerticalContentAlignment="Center" Padding="10,5,5,5" Margin="10,32,10,0" Background="Transparent" HorizontalContentAlignment="Center">
-                <Label.Foreground>
-                    <SolidColorBrush Color="White" Opacity="0.9"/>
-                </Label.Foreground>
-            </Label>
-        </Grid>
         <Grid x:Name="panelItem2" Grid.Column="1" HorizontalAlignment="Left" Height="519" Grid.Row="1" VerticalAlignment="Top" Width="793" Visibility="Hidden">
             <Label x:Name="nameItemLabel_Copy1" Content="Продажа авиабилета" VerticalAlignment="Top" Height="82" FontSize="20" VerticalContentAlignment="Center" Padding="10,5,5,5" Margin="10,136,10,0" Background="Transparent" HorizontalContentAlignment="Center">
                 <Label.Foreground>
@@ -72,7 +65,78 @@
                 <SolidColorBrush Color="White" Opacity="0.9"/>
             </Label.Foreground>
         </Label>
-
+        <Grid x:Name="item1Grid" Grid.Column="1" Margin="9.8,10.2,10,10" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64*"/>
+                <RowDefinition Height="97*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="item1Label" Content="Выбор рейса" VerticalAlignment="Top" Height="58" FontSize="20" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="155">
+                <Label.Foreground>
+                    <SolidColorBrush Color="#99FFFFFF" Opacity="0.9"/>
+                </Label.Foreground>
+            </Label>
+            <Label x:Name="item1DepLabel" Content="Откуда:" VerticalAlignment="Top" Height="58" FontSize="20" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="94" Margin="0,56,0,0">
+                <Label.Foreground>
+                    <SolidColorBrush Color="#99FFFFFF" Opacity="0.9"/>
+                </Label.Foreground>
+            </Label>
+            <ComboBox x:Name="item1DepCombo" HorizontalAlignment="Left" Margin="102,75,0,0" Width="200" BorderBrush="White" Height="26" VerticalAlignment="Top">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+            <Label x:Name="item1DesLabel" Content="Куда:" VerticalAlignment="Top" Height="58" FontSize="20" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="94" Margin="365,56,0,0">
+                <Label.Foreground>
+                    <SolidColorBrush Color="#99FFFFFF" Opacity="0.9"/>
+                </Label.Foreground>
+            </Label>
+            <ComboBox x:Name="item1DesCombo" HorizontalAlignment="Left" Margin="450,75,0,0" VerticalAlignment="Top" Width="200" BorderBrush="White" Height="26">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+            <Label x:Name="item1Date" Content="Дата вылета:" VerticalAlignment="Top" Height="58" FontSize="20" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="155" Margin="0,122,0,0">
+                <Label.Foreground>
+                    <SolidColorBrush Color="#99FFFFFF" Opacity="0.9"/>
+                </Label.Foreground>
+            </Label>
+            <DatePicker HorizontalAlignment="Left" Margin="155,140,0,0" VerticalAlignment="Top" Width="218" FontSize="16" HorizontalContentAlignment="Stretch" Height="40" BorderBrush="{x:Null}"/>
+            <Button x:Name="item1SearchTicket" Content="Найти билеты" HorizontalAlignment="Left" Margin="450,136,0,0" VerticalAlignment="Top" Width="200" FontSize="16" Height="44" Background="#FF315377" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" Cursor="Hand" Style="{DynamicResource BorderlessButton}" Click="item1SearchTicket_Click"/>
+            <DataGrid x:Name="item1ResultGrid" HorizontalAlignment="Left" Height="216" Margin="10,9.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="753" ColumnWidth="*"/>
+            <Label x:Name="item1ticketLabel" Content="Введите номер билета для покупки:" VerticalAlignment="Top" Height="58" FontSize="20" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="363" Margin="10,232.6,0,0" Grid.Row="1">
+                <Label.Foreground>
+                    <SolidColorBrush Color="#99FFFFFF" Opacity="0.9"/>
+                </Label.Foreground>
+            </Label>
+            <TextBox x:Name="numTicketBox" HorizontalAlignment="Left" Height="23" Margin="378,250.6,0,10" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="81" FontSize="20" BorderBrush="#FFE8E7E7" Background="{x:Null}" BorderThickness="0,0,0,1" ClipToBounds="True" Foreground="#FFE7E7E7" Padding="0"/>
+            <Button x:Name="item1NextBtn" Content="Далее" HorizontalAlignment="Left" Margin="531,252.6,0,0" VerticalAlignment="Top" Width="200" FontSize="16" Height="35" Background="#FF315377" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" Cursor="Hand" Style="{DynamicResource BorderlessButton}" Grid.Row="1"/>
+        </Grid>
     </Grid>
-
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="BorderlessButton">
+            <Setter Property="Opacity" Value="0.5" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="1" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
 </Window>

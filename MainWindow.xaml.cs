@@ -21,20 +21,21 @@ namespace AirportService
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Preload DB
+        AirportServiceEntities dataEntities = new AirportServiceEntities();
 
-        // Установка таймера
+        // Create timer
         System.Windows.Threading.DispatcherTimer timer1 = new System.Windows.Threading.DispatcherTimer();
 
         public MainWindow()
         {
             InitializeComponent();
 
-            // Заранее подгрузка БД
-            var initializer = new CreateDatabaseIfNotExists<DbContext>();
-            using (var context = new Models.DbTestContext())
-            {
-                initializer.InitializeDatabase(context);
-            }
+            //var initializer = new CreateDatabaseIfNotExists<DbContext>();
+            //using (var context = new Models.DbTestContext())
+            //{
+            //    initializer.InitializeDatabase(context);
+            //}
         }
 
         // placeholder button
@@ -92,34 +93,31 @@ namespace AirportService
             // Иначе проверяем на совпадение в БД
             else
             {
-                using (var context = new Models.DbTestContext())
+                var user = dataEntities.Employees;
+
+                string login = loginText.Text;
+                string pass = passText.Text;
+
+                // Глобальный класс в App.xaml
+                // Передаем туда имя юзера, чтобы отобразить на сплеш скрине
+                App.My.username = loginText.Text;
+
+                // Проводим авторизацию
+                var getLogin = user.FirstOrDefault(p => p.login == login && p.password == pass);
+                if (getLogin == null)
                 {
-                    var user = context.Users;
+                    errorLabel.Content = "Неверный логин или пароль";
+                    errorImg.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    loginBtn.Visibility = Visibility.Hidden;
+                    loadingBar.Visibility = Visibility.Visible;
 
-                    string login = loginText.Text;
-                    string pass = passText.Text;
-
-                    // Глобальный класс в App.xaml
-                    // Передаем туда имя юзера, чтобы отобразить на сплеш скрине
-                    App.My.username = loginText.Text;
-
-                    // Проводим авторизацию
-                    var getLogin = user.FirstOrDefault(p => p.username == login && p.password == pass);
-                    if (getLogin == null)
-                    {
-                        errorLabel.Content = "Неверный логин или пароль";
-                        errorImg.Visibility = Visibility.Visible;
-                    }
-                    else
-                    {
-                        loginBtn.Visibility = Visibility.Hidden;
-                        loadingBar.Visibility = Visibility.Visible;
-
-                        // Параметры таймера
-                        timer1.Tick += new EventHandler(timerTick);
-                        timer1.Interval = TimeSpan.FromMilliseconds(1);
-                        timer1.Start();
-                    }
+                    // Параметры таймера
+                    timer1.Tick += new EventHandler(timerTick);
+                    timer1.Interval = TimeSpan.FromMilliseconds(1);
+                    timer1.Start();
                 }
             }
         }

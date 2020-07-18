@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ac007df99e2d4900894092891e4117e7" Name="Diagram1">
+        <EntityTypeShape EntityType="AirportServiceModel.Aircraft" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportServiceModel.Airlines" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportServiceModel.Employees" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportServiceModel.Flights" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportServiceModel.Gender" Width="1.5" PointX="5.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportServiceModel.Passengers" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportServiceModel.States" Width="1.5" PointX="5.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportServiceModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirportServiceModel.Tickets" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="AirportServiceModel.FK_Flights_Aircraft" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportServiceModel.FK_Flights_Airlines" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportServiceModel.FK_Tickets_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportServiceModel.FK_Tickets_Flights" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportServiceModel.FK_Passengers_Passengers" ManuallyRouted="false" />
+        <AssociationConnector Association="AirportServiceModel.FK_Passengers_States" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AirportServiceModel.City" Width="1.5" PointX="0.75" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
