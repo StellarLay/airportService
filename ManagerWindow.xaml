@@ -60,9 +60,9 @@
                 </Label.Foreground>
             </Label>
         </Grid>
-        <Label x:Name="welcomeText" Content="" VerticalAlignment="Top" Height="81" VerticalContentAlignment="Center" Padding="20,5,5,5" Margin="428,0,105,0" Background="Transparent" Grid.Column="1" HorizontalContentAlignment="Right">
+        <Label x:Name="welcomeText" Content="" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" Padding="5" Margin="602.8,41,0,0" Background="Transparent" Grid.Column="1" HorizontalAlignment="Left" Grid.RowSpan="2" Width="180" HorizontalContentAlignment="Right">
             <Label.Foreground>
-                <SolidColorBrush Color="White" Opacity="0.9"/>
+                <SolidColorBrush Color="#99FFFFFF" Opacity="0.9"/>
             </Label.Foreground>
         </Label>
         <Grid x:Name="item1Grid" Grid.Column="1" Margin="9.8,10.2,10,10" Grid.Row="1">
@@ -75,12 +75,12 @@
                     <SolidColorBrush Color="#99FFFFFF" Opacity="0.9"/>
                 </Label.Foreground>
             </Label>
-            <Label x:Name="item1DepLabel" Content="Откуда:" VerticalAlignment="Top" Height="58" FontSize="20" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="94" Margin="0,56,0,0">
+            <Label x:Name="item1DepLabel" Content="Откуда:" VerticalAlignment="Top" Height="58" FontSize="16" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="94" Margin="0,56,0,0">
                 <Label.Foreground>
                     <SolidColorBrush Color="#99FFFFFF" Opacity="0.9"/>
                 </Label.Foreground>
             </Label>
-            <ComboBox x:Name="item1DepCombo" HorizontalAlignment="Left" Margin="102,75,0,0" Width="200" BorderBrush="White" Height="26" VerticalAlignment="Top">
+            <ComboBox x:Name="item1DepCombo" HorizontalAlignment="Left" Margin="102,71,0,0" Width="200" BorderBrush="White" Height="30" VerticalAlignment="Top" Padding="0" Cursor="Arrow" AutomationProperties.HelpText="Выберите пункт отправления" BorderThickness="0" UseLayoutRounding="False" VerticalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MaxDropDownHeight="400">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -88,12 +88,12 @@
                     </LinearGradientBrush>
                 </ComboBox.Background>
             </ComboBox>
-            <Label x:Name="item1DesLabel" Content="Куда:" VerticalAlignment="Top" Height="58" FontSize="20" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="94" Margin="365,56,0,0">
+            <Label x:Name="item1DesLabel" Content="Куда:" VerticalAlignment="Top" Height="58" FontSize="16" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="94" Margin="365,56,0,0">
                 <Label.Foreground>
                     <SolidColorBrush Color="#99FFFFFF" Opacity="0.9"/>
                 </Label.Foreground>
             </Label>
-            <ComboBox x:Name="item1DesCombo" HorizontalAlignment="Left" Margin="450,75,0,0" VerticalAlignment="Top" Width="200" BorderBrush="White" Height="26">
+            <ComboBox x:Name="item1DesCombo" HorizontalAlignment="Left" Margin="450,71,0,0" VerticalAlignment="Top" Width="200" BorderBrush="White" Height="30" Cursor="Arrow" MaxDropDownHeight="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -101,21 +101,22 @@
                     </LinearGradientBrush>
                 </ComboBox.Background>
             </ComboBox>
-            <Label x:Name="item1Date" Content="Дата вылета:" VerticalAlignment="Top" Height="58" FontSize="20" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="155" Margin="0,122,0,0">
+            <Label x:Name="item1Date" Content="Дата вылета:" VerticalAlignment="Top" Height="58" FontSize="16" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="155" Margin="0,122,0,0">
                 <Label.Foreground>
                     <SolidColorBrush Color="#99FFFFFF" Opacity="0.9"/>
                 </Label.Foreground>
             </Label>
-            <DatePicker HorizontalAlignment="Left" Margin="155,140,0,0" VerticalAlignment="Top" Width="218" FontSize="16" HorizontalContentAlignment="Stretch" Height="40" BorderBrush="{x:Null}"/>
+            <DatePicker x:Name="item1DatePicker" HorizontalAlignment="Left" Margin="155,140,0,0" VerticalAlignment="Top" Width="218" FontSize="14" HorizontalContentAlignment="Stretch" Height="40" BorderBrush="{x:Null}" Style="{DynamicResource DatePickerStyle}" Foreground="#FFFFFCFC" VerticalContentAlignment="Center" BorderThickness="0" Padding="10,5,10,2" SelectedDateChanged="item1DatePicker_SelectedDateChanged" Focusable="False"/>
             <Button x:Name="item1SearchTicket" Content="Найти билеты" HorizontalAlignment="Left" Margin="450,136,0,0" VerticalAlignment="Top" Width="200" FontSize="16" Height="44" Background="#FF315377" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" Cursor="Hand" Style="{DynamicResource BorderlessButton}" Click="item1SearchTicket_Click"/>
             <DataGrid x:Name="item1ResultGrid" HorizontalAlignment="Left" Height="216" Margin="10,9.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="753" ColumnWidth="*"/>
-            <Label x:Name="item1ticketLabel" Content="Введите номер билета для покупки:" VerticalAlignment="Top" Height="58" FontSize="20" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="363" Margin="10,232.6,0,0" Grid.Row="1">
+            <Label x:Name="item1ticketLabel" Content="Введите номер билета для покупки:" VerticalAlignment="Top" Height="58" FontSize="16" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="363" Margin="10,232.6,0,0" Grid.Row="1">
                 <Label.Foreground>
                     <SolidColorBrush Color="#99FFFFFF" Opacity="0.9"/>
                 </Label.Foreground>
             </Label>
-            <TextBox x:Name="numTicketBox" HorizontalAlignment="Left" Height="23" Margin="378,250.6,0,10" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="81" FontSize="20" BorderBrush="#FFE8E7E7" Background="{x:Null}" BorderThickness="0,0,0,1" ClipToBounds="True" Foreground="#FFE7E7E7" Padding="0"/>
-            <Button x:Name="item1NextBtn" Content="Далее" HorizontalAlignment="Left" Margin="531,252.6,0,0" VerticalAlignment="Top" Width="200" FontSize="16" Height="35" Background="#FF315377" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" Cursor="Hand" Style="{DynamicResource BorderlessButton}" Grid.Row="1"/>
+            <TextBox x:Name="numTicketBox" HorizontalAlignment="Left" Height="23" Margin="306,250.6,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="81" FontSize="16" BorderBrush="#FFE8E7E7" Background="{x:Null}" BorderThickness="0,0,0,1" ClipToBounds="True" Foreground="#FFE7E7E7" Padding="0"/>
+            <Button x:Name="item1NextBtn" Content="Далее" HorizontalAlignment="Left" Margin="531,246.6,0,0" VerticalAlignment="Top" Width="200" FontSize="16" Height="35" Background="#FF315377" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" Cursor="Hand" Style="{DynamicResource BorderlessButton}" Grid.Row="1"/>
+            <Label x:Name="selectDateLabel" Content="Выберите дату" HorizontalAlignment="Left" Margin="166,147,0,0" VerticalAlignment="Top" Width="145" Foreground="#FFE4E4E4"/>
         </Grid>
     </Grid>
     <Window.Resources>

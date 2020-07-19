@@ -27,6 +27,16 @@ namespace AirportService
             InitializeComponent();
 
             welcomeText.Content = "Приветствуем, " + App.My.username;
+
+            // Загрузим селект боксы
+            var query = from cities in dataEntities.City
+                        select new { cities.name };
+            item1DepCombo.ItemsSource = query.ToList();
+            item1DepCombo.DisplayMemberPath = "name";
+            item1DepCombo.SelectedIndex = 0;
+            item1DesCombo.ItemsSource = query.ToList();
+            item1DesCombo.DisplayMemberPath = "name";
+            item1DesCombo.SelectedIndex = 0;
         }
 
         // При фокусе на 1-й итем
@@ -86,16 +96,6 @@ namespace AirportService
             }
             rectangleItem1.Visibility = Visibility.Visible;
             nameItemLabel.Content = "Бронирование авиабилетов";
-
-            // Загрузим селект боксы
-            var query = from cities in dataEntities.City
-                                        select new { cities.name };
-            item1DepCombo.ItemsSource = query.ToList();
-            item1DepCombo.DisplayMemberPath = "name";
-            item1DepCombo.SelectedIndex = 0;
-            item1DesCombo.ItemsSource = query.ToList();
-            item1DesCombo.DisplayMemberPath = "name";
-            item1DesCombo.SelectedIndex = 0;
         }
 
         // Клик на 2-й итем
@@ -135,17 +135,46 @@ namespace AirportService
         // Клик на кнопку "Найти билеты"
         private void item1SearchTicket_Click(object sender, RoutedEventArgs e)
         {
-            var query = from routes in dataEntities.Flights
-                        select new
-                        {
-                            Номер = routes.id,
-                            Дата = routes.date.Day + "." + routes.date.Month + "." + routes.date.Year,
-                            Отправление = routes.deptime.ToString(),
-                            Прибытие = routes.destime.ToString(),
-                            Авиакомпания = routes.airline,
-                            Цена = routes.ticketprice
-                        };
-            item1ResultGrid.ItemsSource = query.ToList();
+            try
+            {
+                if (item1DepCombo.SelectedItem != null && item1DesCombo != null && item1DatePicker.SelectedDate != null)
+                {
+                    var date = new DateTime(item1DatePicker.SelectedDate.Value.Ticks, DateTimeKind.Unspecified).Date;
+                    var query = from routes in dataEntities.Flights
+                                where routes.departure == item1DepCombo.Text &&
+                                routes.destination == item1DesCombo.Text &&
+                                routes.date == date
+                                select new
+                                {
+                                    Номер = routes.id,
+                                    Дата = routes.date.Day + "." + routes.date.Month + "." + routes.date.Year,
+                                    Отправление = routes.deptime.ToString(),
+                                    Прибытие = routes.destime.ToString(),
+                                    Авиакомпания = routes.airline,
+                                    Цена = routes.ticketprice,
+                                    test = routes.date
+                                };
+                    item1ResultGrid.ItemsSource = query.ToList();
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Заполните все необходимые поля!",
+                        "Информация",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Убираем placeholder когда выбрали дату
+        private void item1DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectDateLabel.Visibility = Visibility.Hidden;
         }
     }
 }
