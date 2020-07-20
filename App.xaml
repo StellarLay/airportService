@@ -2,13 +2,14 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AirportService"
-             StartupUri="mainwindow.xaml">
+             StartupUri="ManagerWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="comboboxStyle.xaml"/>
                 <ResourceDictionary Source="datePicker.xaml"/>
                 <ResourceDictionary Source="fontAwesome.xaml"/>
+                <ResourceDictionary Source="DataGrid.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

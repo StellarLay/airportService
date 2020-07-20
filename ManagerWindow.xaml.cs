@@ -139,6 +139,7 @@ namespace AirportService
             {
                 if (item1DepCombo.SelectedItem != null && item1DesCombo != null && item1DatePicker.SelectedDate != null)
                 {
+                    // DataGrid loading
                     var date = new DateTime(item1DatePicker.SelectedDate.Value.Ticks, DateTimeKind.Unspecified).Date;
                     var query = from routes in dataEntities.Flights
                                 where routes.departure == item1DepCombo.Text &&
@@ -151,10 +152,21 @@ namespace AirportService
                                     Отправление = routes.deptime.ToString(),
                                     Прибытие = routes.destime.ToString(),
                                     Авиакомпания = routes.airline,
-                                    Цена = routes.ticketprice,
-                                    test = routes.date
+                                    Цена = routes.ticketprice
                                 };
                     item1ResultGrid.ItemsSource = query.ToList();
+                    
+                    // Если билеты не найдены
+                    if(item1ResultGrid.Items.Count == 0)
+                    {
+                        ticketNoneLabel.Visibility = Visibility.Visible;
+                        item1ResultGrid.Visibility = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        item1ResultGrid.Visibility = Visibility.Visible;
+                        ticketNoneLabel.Visibility = Visibility.Hidden;
+                    }
                 }
                 else
                 {
@@ -175,6 +187,20 @@ namespace AirportService
         private void item1DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             selectDateLabel.Visibility = Visibility.Hidden;
+        }
+
+        // Кнопка "Далее"
+        private void item1NextBtn_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // Загрузим селект бокс "Гражданство"
+            var query = from states in dataEntities.States
+                        select new { states.name };
+            stateComboBox.ItemsSource = query.ToList();
+            stateComboBox.DisplayMemberPath = "name";
+            stateComboBox.SelectedIndex = 0;
+
+            Item1GridPersonal.Visibility = Visibility.Visible;
+            item1Grid.Visibility = Visibility.Hidden;
         }
     }
 }
