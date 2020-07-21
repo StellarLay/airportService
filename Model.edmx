@@ -64,9 +64,9 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="firstname" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="lastname" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="middlename" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="middlename" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="gender" Type="int" Nullable="false" />
           <Property Name="datebirthday" Type="date" Nullable="false" />
           <Property Name="state" Type="int" Nullable="false" />
@@ -272,9 +272,9 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="firstname" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="lastname" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="middlename" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="middlename" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="gender" Type="Int32" Nullable="false" />
           <Property Name="datebirthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="state" Type="Int32" Nullable="false" />
