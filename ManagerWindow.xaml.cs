@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -21,7 +23,6 @@ namespace AirportService
     public partial class ManagerWindow : Window
     {
         AirportServiceEntities dataEntities = new AirportServiceEntities();
-
         public ManagerWindow()
         {
             InitializeComponent();
@@ -39,8 +40,6 @@ namespace AirportService
             item1DesCombo.SelectedIndex = 0;
 
             // Спрячем элементы некоторые или покажем
-            item1ticketLabel.Visibility = Visibility.Hidden;
-            numTicketBox.Visibility = Visibility.Hidden;
             rectangleItem1.Visibility = Visibility.Visible;
         }
 
@@ -167,16 +166,12 @@ namespace AirportService
                     {
                         ticketNoneLabel.Visibility = Visibility.Visible;
                         item1ResultGrid.Visibility = Visibility.Hidden;
-                        item1ticketLabel.Visibility = Visibility.Hidden;
-                        numTicketBox.Visibility = Visibility.Hidden;
                         item1NextBtn.IsEnabled = false;
                     }
                     else
                     {
                         item1ResultGrid.Visibility = Visibility.Visible;
                         ticketNoneLabel.Visibility = Visibility.Hidden;
-                        item1ticketLabel.Visibility = Visibility.Visible;
-                        numTicketBox.Visibility = Visibility.Visible;
                         item1NextBtn.IsEnabled = true;
                     }
                 }
@@ -215,34 +210,41 @@ namespace AirportService
             item1Grid.Visibility = Visibility.Hidden;
         }
 
+        int ticketId = 0;
         // Кнопка "Забронировать"
         private void BuyBtn_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            try
+            // Если хоть какое то поле не заполнено, то не бронировать
+            if (stateComboBox.SelectedItem == null ||
+                passportBox.SelectedItem == null ||
+                textbox1.Text == "" ||
+                textbox2.Text == "" ||
+                textbox3.Text == "" ||
+                textboxLastname.Text == "" ||
+                textboxFirstname.Text == "" ||
+                textboxMiddlename.Text == "" ||
+                dateBirthdayPicker.SelectedDate == null ||
+                comboboxGender.SelectedItem == null)
             {
-                // Если хоть какое то поле не заполнено, то не бронировать
-                if (stateComboBox.SelectedItem == null ||
-                    passportBox.SelectedItem == null ||
-                    textbox1.Text == "" ||
-                    textbox2.Text == "" ||
-                    textbox3.Text == "" ||
-                    textboxLastname.Text == "" ||
-                    textboxFirstname.Text == "" ||
-                    textboxMiddlename.Text == "" ||
-                    dateBirthdayPicker.SelectedDate == null ||
-                    comboboxGender.SelectedItem == null)
+                MessageBox.Show(
+                    "Заполните все необходимые поля!",
+                    "Информация",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
+            else
+            {
+                int getSerialPassport = Convert.ToInt32(textbox2.Text);
+                var getPassenger = dataEntities.Passengers.Where(x => x.passport == getSerialPassport).FirstOrDefault();
+                if (getPassenger != null)
                 {
-                    MessageBox.Show(
-                        "Заполните все необходимые поля!",
-                        "Информация",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
+                    MessageBox.Show("Пассажир с такими данными паспорта уже есть в базе!");
                 }
                 else
                 {
                     int gender = 1;
                     int state = 1;
-                    if(comboboxGender.Text == "женский")
+                    if (comboboxGender.Text == "женский")
                     {
                         gender = 2;
                     }
@@ -268,7 +270,7 @@ namespace AirportService
                         gender = gender,
                         datebirthday = dateBirthdayPicker.DisplayDate,
                         state = state,
-                        passport = Convert.ToInt32(textbox2.Text) + Convert.ToInt32(textbox3.Text)
+                        passport = getSerialPassport
                     };
                     dataEntities.Passengers.Add(passenger);
                     dataEntities.SaveChanges();
@@ -279,11 +281,33 @@ namespace AirportService
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);
                 }
+
+                int getIdEmploye = dataEntities.Employees.Where(w => w.login == App.My.username).Select(s => s.id).FirstOrDefault();
+                // Далее после внесения пассажира бронируем билет
+                Tickets ticket = new Tickets
+                {
+                    firstname = textboxFirstname.Text,
+                    lastname = textboxLastname.Text,
+                    middlename = textboxMiddlename.Text,
+                    employee = getIdEmploye,
+                    flight = ticketId,
+                    date = DateTime.Now
+                };
+                dataEntities.Tickets.Add(ticket);
+                dataEntities.SaveChanges();
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+        }
+
+        // Получим номер выбранного билета
+        private void item1ResultGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = item1ResultGrid.SelectedItem;
+            ticketId = Convert.ToInt32(item.GetType().GetProperty("Номер").GetValue(item, null));
+        }
+
+        private void Border_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }

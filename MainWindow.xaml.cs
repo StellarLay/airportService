@@ -30,12 +30,6 @@ namespace AirportService
         public MainWindow()
         {
             InitializeComponent();
-
-            //var initializer = new CreateDatabaseIfNotExists<DbContext>();
-            //using (var context = new Models.DbTestContext())
-            //{
-            //    initializer.InitializeDatabase(context);
-            //}
         }
 
         // placeholder button
@@ -98,9 +92,6 @@ namespace AirportService
                 string login = loginText.Text;
                 string pass = passText.Text;
 
-                // Глобальный класс в App.xaml
-                // Передаем туда имя юзера, чтобы отобразить на сплеш скрине
-                App.My.username = loginText.Text;
 
                 // Проводим авторизацию
                 var getLogin = user.FirstOrDefault(p => p.login == login && p.password == pass);
@@ -111,8 +102,13 @@ namespace AirportService
                 }
                 else
                 {
+                    // Передаем туда имя юзера, чтобы отобразить на сплеш скрине
+                    App.My.username = loginText.Text;
+
                     loginBtn.Visibility = Visibility.Hidden;
                     loadingBar.Visibility = Visibility.Visible;
+                    errorImg.Visibility = Visibility.Hidden;
+                    errorLabel.Visibility = Visibility.Hidden;
 
                     // Параметры таймера
                     timer1.Tick += new EventHandler(timerTick);

@@ -107,15 +107,9 @@
                 </Label.Foreground>
             </Label>
             <DatePicker x:Name="item1DatePicker" HorizontalAlignment="Left" Margin="155,140,0,0" VerticalAlignment="Top" Width="218" FontSize="14" HorizontalContentAlignment="Stretch" Height="40" BorderBrush="{x:Null}" Style="{DynamicResource DatePickerStyle}" Foreground="#FFFFFCFC" VerticalContentAlignment="Center" BorderThickness="0" Padding="10,5,10,2" SelectedDateChanged="item1DatePicker_SelectedDateChanged" Focusable="False"/>
-            <Button x:Name="item1SearchTicket" Content="Найти билеты" HorizontalAlignment="Left" Margin="450,136,0,0" VerticalAlignment="Top" Width="200" FontSize="16" Height="44" Background="#FF315377" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" Cursor="Hand" Style="{DynamicResource BorderlessButton}" Click="item1SearchTicket_Click"/>
-            <DataGrid x:Name="item1ResultGrid" HorizontalAlignment="Left" Height="216" Margin="10,9.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="753" ColumnWidth="*" Background="#FF263D58" Style="{DynamicResource DataGridStyle}" HorizontalGridLinesBrush="#FF688CAF" VerticalGridLinesBrush="#FF688CAF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinColumnWidth="25" HeadersVisibility="Column" Visibility="Hidden"/>
-            <Label x:Name="item1ticketLabel" Content="Введите номер билета для покупки:" VerticalAlignment="Top" Height="58" FontSize="16" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="363" Margin="10,242.6,0,0" Grid.Row="1">
-                <Label.Foreground>
-                    <SolidColorBrush Color="#99FFFFFF" Opacity="0.9"/>
-                </Label.Foreground>
-            </Label>
-            <TextBox x:Name="numTicketBox" HorizontalAlignment="Left" Height="23" Margin="306,260.6,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="81" FontSize="16" BorderBrush="#FFE8E7E7" Background="{x:Null}" BorderThickness="0,0,0,1" ClipToBounds="True" Foreground="#FFE7E7E7" Padding="0"/>
-            <Button x:Name="item1NextBtn" Content="Далее" HorizontalAlignment="Left" Margin="565,254.6,0,0" VerticalAlignment="Top" Width="198" FontSize="16" Height="35" Background="#FF315377" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" Cursor="Hand" Style="{DynamicResource BorderlessButton}" Grid.Row="1" PreviewMouseLeftButtonDown="item1NextBtn_PreviewMouseLeftButtonDown" IsEnabled="False"/>
+            <Button x:Name="item1SearchTicket" Content="Найти билеты" HorizontalAlignment="Left" Margin="450,136,0,0" VerticalAlignment="Top" Width="200" FontSize="16" Height="44" Background="#FF315377" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" Cursor="Hand" Style="{DynamicResource ButtonStyle}" Click="item1SearchTicket_Click"/>
+            <DataGrid x:Name="item1ResultGrid" HorizontalAlignment="Left" Height="216" Margin="10,9.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="753" ColumnWidth="*" Background="#FF263D58" Style="{DynamicResource DataGridStyle}" HorizontalGridLinesBrush="#FF688CAF" VerticalGridLinesBrush="#FF688CAF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinColumnWidth="25" HeadersVisibility="Column" Visibility="Hidden" SelectionChanged="item1ResultGrid_SelectionChanged"/>
+            <Button x:Name="item1NextBtn" Content="Далее" HorizontalAlignment="Left" Margin="565,244.6,0,0" VerticalAlignment="Top" Width="198" FontSize="16" Height="38" Background="#FF315377" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" Cursor="Hand" Style="{DynamicResource ButtonStyle}" Grid.Row="1" PreviewMouseLeftButtonDown="item1NextBtn_PreviewMouseLeftButtonDown" IsEnabled="False"/>
             <Label x:Name="selectDateLabel" Content="Выберите дату" HorizontalAlignment="Left" Margin="166,147,0,0" VerticalAlignment="Top" Width="145" Foreground="#FFE4E4E4"/>
             <Label x:Name="ticketNoneLabel" Content="Билетов по заданному маршруту нет:(" VerticalAlignment="Top" Height="58" FontSize="20" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="753" Margin="10,95.6,0,0" Grid.Row="1" HorizontalContentAlignment="Center" Visibility="Hidden">
                 <Label.Foreground>
@@ -149,37 +143,37 @@
                     <SolidColorBrush Color="#E5FFFFFF" Opacity="0.9"/>
                 </Label.Foreground>
             </Label>
-            <TextBox x:Name="textbox1" HorizontalAlignment="Left" Height="28" Margin="112,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="498" Background="#FF192737" VerticalContentAlignment="Center" Padding="5,0,0,0" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" FontSize="14"/>
+            <TextBox x:Name="textbox1" HorizontalAlignment="Left" Height="28" Margin="112,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="498" Background="#FF192737" VerticalContentAlignment="Center" Padding="5,0,0,0" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" FontSize="14" Style="{DynamicResource TextBoxStyle}"/>
             <Label x:Name="personalLabel4" Content="Серия:" VerticalAlignment="Top" Height="39" FontSize="16" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Margin="0,164,0,0">
                 <Label.Foreground>
                     <SolidColorBrush Color="#E5FFFFFF" Opacity="0.9"/>
                 </Label.Foreground>
             </Label>
-            <TextBox x:Name="textbox2" HorizontalAlignment="Left" Height="28" Margin="83,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" Background="#FF192737" VerticalContentAlignment="Center" Padding="5,0,0,0" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" FontSize="14"/>
+            <TextBox x:Name="textbox2" HorizontalAlignment="Left" Height="28" Margin="83,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" Background="#FF192737" VerticalContentAlignment="Center" Padding="5,0,0,0" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" FontSize="14" Style="{DynamicResource TextBoxStyle}"/>
             <Label x:Name="personalLabel5" Content="Номер:" VerticalAlignment="Top" Height="39" FontSize="16" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Margin="200,164,0,0">
                 <Label.Foreground>
                     <SolidColorBrush Color="#E5FFFFFF" Opacity="0.9"/>
                 </Label.Foreground>
             </Label>
-            <TextBox x:Name="textbox3" HorizontalAlignment="Left" Height="28" Margin="283,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Background="#FF192737" VerticalContentAlignment="Center" Padding="5,0,0,0" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" FontSize="14"/>
+            <TextBox x:Name="textbox3" HorizontalAlignment="Left" Height="28" Margin="283,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Background="#FF192737" VerticalContentAlignment="Center" Padding="5,0,0,0" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" FontSize="14" Style="{DynamicResource TextBoxStyle}"/>
             <Label x:Name="personalLabel6" Content="Фамилия:" VerticalAlignment="Top" Height="39" FontSize="16" VerticalContentAlignment="Center" Padding="3,5,5,5" Background="Transparent" HorizontalAlignment="Left" Margin="18,238,0,0" Width="96">
                 <Label.Foreground>
                     <SolidColorBrush Color="#E5FFFFFF" Opacity="0.9"/>
                 </Label.Foreground>
             </Label>
-            <TextBox x:Name="textboxLastname" HorizontalAlignment="Left" Height="35" Margin="18,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Background="#FF192737" VerticalContentAlignment="Center" Padding="5,0,0,0" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" FontSize="14"/>
+            <TextBox x:Name="textboxLastname" HorizontalAlignment="Left" Height="35" Margin="18,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Background="#FF192737" VerticalContentAlignment="Center" Padding="5,0,0,0" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" FontSize="14" Style="{DynamicResource TextBoxStyle}"/>
             <Label x:Name="personalLabel7" Content="Имя:" VerticalAlignment="Top" Height="39" FontSize="16" VerticalContentAlignment="Center" Padding="3,5,5,5" Background="Transparent" HorizontalAlignment="Left" Margin="18,328,0,0">
                 <Label.Foreground>
                     <SolidColorBrush Color="#E5FFFFFF" Opacity="0.9"/>
                 </Label.Foreground>
             </Label>
-            <TextBox x:Name="textboxFirstname" HorizontalAlignment="Left" Height="35" Margin="18,366,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Background="#FF192737" VerticalContentAlignment="Center" Padding="5,0,0,0" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" FontSize="14"/>
+            <TextBox x:Name="textboxFirstname" HorizontalAlignment="Left" Height="35" Margin="18,366,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Background="#FF192737" VerticalContentAlignment="Center" Padding="5,0,0,0" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" FontSize="14" Style="{DynamicResource TextBoxStyle}"/>
             <Label x:Name="personalLabel8" Content="Отчество:" VerticalAlignment="Top" Height="39" FontSize="16" VerticalContentAlignment="Center" Padding="3,5,5,5" Background="Transparent" HorizontalAlignment="Left" Margin="18,418,0,0">
                 <Label.Foreground>
                     <SolidColorBrush Color="#E5FFFFFF" Opacity="0.9"/>
                 </Label.Foreground>
             </Label>
-            <TextBox x:Name="textboxMiddlename" HorizontalAlignment="Left" Height="35" Margin="18,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Background="#FF192737" VerticalContentAlignment="Center" Padding="5,0,0,0" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" FontSize="14"/>
+            <TextBox x:Name="textboxMiddlename" HorizontalAlignment="Left" Height="35" Margin="18,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Background="#FF192737" VerticalContentAlignment="Center" Padding="5,0,0,0" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" FontSize="14" Style="{DynamicResource TextBoxStyle}"/>
             <Label x:Name="personalLabel9" Content="Дата рождения:" VerticalAlignment="Top" Height="39" FontSize="16" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Margin="398,278,0,0">
                 <Label.Foreground>
                     <SolidColorBrush Color="#E5FFFFFF" Opacity="0.9"/>
@@ -195,28 +189,10 @@
                 <ComboBoxItem Content="мужской"/>
                 <ComboBoxItem Content="женский"/>
             </ComboBox>
-            <Button x:Name="BuyBtn" Content="Забронировать" HorizontalAlignment="Left" Margin="418,457,0,0" VerticalAlignment="Top" Width="288" Height="35" FontSize="14" Foreground="#E5FFFFFF" Background="#FF2E4967" Cursor="Hand" BorderBrush="{x:Null}" Style="{DynamicResource BorderlessButton}" PreviewMouseLeftButtonDown="BuyBtn_PreviewMouseLeftButtonDown"/>
+            <Button x:Name="BuyBtn" Content="Забронировать" HorizontalAlignment="Left" Margin="418,457,0,0" VerticalAlignment="Top" Width="288" Height="38" FontSize="14" Foreground="#E5FFFFFF" Background="#FF2E4967" Cursor="Hand" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle}" PreviewMouseLeftButtonDown="BuyBtn_PreviewMouseLeftButtonDown"/>
         </Grid>
+        <Border BorderThickness="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="688" Grid.ColumnSpan="2" PreviewMouseLeftButtonDown="Border_PreviewMouseLeftButtonDown" Background="#FF1F3144" Margin="207,0,0,0"/>
     </Grid>
     <Window.Resources>
-        <Style TargetType="{x:Type Button}" x:Key="BorderlessButton">
-            <Setter Property="Opacity" Value="0.5" />
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Opacity" Value="1" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </Window.Resources>
 </Window>

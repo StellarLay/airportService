@@ -65,7 +65,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="#FF688CAF"/>
+                <Setter Property="Background" Value="#FF416289"/>
             </Trigger>
 
             <Trigger Property="ItemsControl.AlternationIndex" Value="0">
@@ -95,6 +95,11 @@
     <Style TargetType="DataGridCell">
         <Setter Property="TextBlock.TextAlignment" Value="Center" />
         <Setter Property="Height" Value="50"/>
+        <Style.Triggers>
+            <Trigger Property="DataGridCell.IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF416590" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>
