@@ -46,13 +46,6 @@
                 <SolidColorBrush Color="White" Opacity="0.9"/>
             </Label.Foreground>
         </Label>
-        <Grid x:Name="panelItem2" Grid.Column="1" HorizontalAlignment="Left" Height="519" Grid.Row="1" VerticalAlignment="Top" Width="793" Visibility="Hidden">
-            <Label x:Name="nameItemLabel_Copy1" Content="Продажа авиабилета" VerticalAlignment="Top" Height="82" FontSize="20" VerticalContentAlignment="Center" Padding="10,5,5,5" Margin="10,136,10,0" Background="Transparent" HorizontalContentAlignment="Center">
-                <Label.Foreground>
-                    <SolidColorBrush Color="White" Opacity="0.9"/>
-                </Label.Foreground>
-            </Label>
-        </Grid>
         <Grid x:Name="panelItem3" Grid.Column="1" HorizontalAlignment="Left" Height="519" Grid.Row="1" VerticalAlignment="Top" Width="793" Visibility="Hidden">
             <Label x:Name="nameItemLabel_Copy2" Content="Список пассажиров" VerticalAlignment="Top" Height="80" FontSize="20" VerticalContentAlignment="Center" Padding="10,5,5,5" Margin="10,146,10,0" Background="Transparent" HorizontalContentAlignment="Center">
                 <Label.Foreground>
@@ -65,7 +58,7 @@
                 <SolidColorBrush Color="#99FFFFFF" Opacity="0.9"/>
             </Label.Foreground>
         </Label>
-        <Grid x:Name="item1Grid" Grid.Column="1" Margin="9.8,10.2,10,10" Grid.Row="1">
+        <Grid x:Name="item1Grid" Grid.Column="1" Margin="9.8,10.2,10,10" Grid.Row="1" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="64*"/>
                 <RowDefinition Height="97*"/>
@@ -108,7 +101,7 @@
             </Label>
             <DatePicker x:Name="item1DatePicker" HorizontalAlignment="Left" Margin="155,140,0,0" VerticalAlignment="Top" Width="218" FontSize="14" HorizontalContentAlignment="Stretch" Height="40" BorderBrush="{x:Null}" Style="{DynamicResource DatePickerStyle}" Foreground="#FFFFFCFC" VerticalContentAlignment="Center" BorderThickness="0" Padding="10,5,10,2" SelectedDateChanged="item1DatePicker_SelectedDateChanged" Focusable="False"/>
             <Button x:Name="item1SearchTicket" Content="Найти билеты" HorizontalAlignment="Left" Margin="450,136,0,0" VerticalAlignment="Top" Width="200" FontSize="16" Height="44" Background="#FF315377" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" Cursor="Hand" Style="{DynamicResource ButtonStyle}" Click="item1SearchTicket_Click"/>
-            <DataGrid x:Name="item1ResultGrid" HorizontalAlignment="Left" Height="216" Margin="10,9.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="753" ColumnWidth="*" Background="#FF263D58" Style="{DynamicResource DataGridStyle}" HorizontalGridLinesBrush="#FF688CAF" VerticalGridLinesBrush="#FF688CAF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinColumnWidth="25" HeadersVisibility="Column" Visibility="Hidden" SelectionChanged="item1ResultGrid_SelectionChanged"/>
+            <DataGrid x:Name="item1ResultGrid" HorizontalAlignment="Left" Height="216" Margin="10,9.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="753" ColumnWidth="*" Background="#FF263D58" Style="{DynamicResource DataGridStyle}" HorizontalGridLinesBrush="#FF688CAF" VerticalGridLinesBrush="#FF688CAF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinColumnWidth="25" HeadersVisibility="Column" SelectionChanged="item1ResultGrid_SelectionChanged" Visibility="Hidden"/>
             <Button x:Name="item1NextBtn" Content="Далее" HorizontalAlignment="Left" Margin="565,244.6,0,0" VerticalAlignment="Top" Width="198" FontSize="16" Height="38" Background="#FF315377" Foreground="#E5FFFFFF" BorderBrush="{x:Null}" Cursor="Hand" Style="{DynamicResource ButtonStyle}" Grid.Row="1" PreviewMouseLeftButtonDown="item1NextBtn_PreviewMouseLeftButtonDown" IsEnabled="False"/>
             <Label x:Name="selectDateLabel" Content="Выберите дату" HorizontalAlignment="Left" Margin="166,147,0,0" VerticalAlignment="Top" Width="145" Foreground="#FFE4E4E4"/>
             <Label x:Name="ticketNoneLabel" Content="Билетов по заданному маршруту нет:(" VerticalAlignment="Top" Height="58" FontSize="20" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Width="753" Margin="10,95.6,0,0" Grid.Row="1" HorizontalContentAlignment="Center" Visibility="Hidden">
@@ -191,7 +184,52 @@
             </ComboBox>
             <Button x:Name="BuyBtn" Content="Забронировать" HorizontalAlignment="Left" Margin="418,457,0,0" VerticalAlignment="Top" Width="288" Height="38" FontSize="14" Foreground="#E5FFFFFF" Background="#FF2E4967" Cursor="Hand" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle}" PreviewMouseLeftButtonDown="BuyBtn_PreviewMouseLeftButtonDown"/>
         </Grid>
+
         <Border BorderThickness="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="688" Grid.ColumnSpan="2" PreviewMouseLeftButtonDown="Border_PreviewMouseLeftButtonDown" Background="#FF1F3144" Margin="207,0,0,0"/>
+        <Grid x:Name="TicketGrid" Grid.Column="1" HorizontalAlignment="Left" Height="492" Margin="9.8,17.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="773">
+            <Label x:Name="ticketHead" Content="Оплата" VerticalAlignment="Top" Height="35" FontSize="18" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left">
+                <Label.Foreground>
+                    <SolidColorBrush Color="#FFE8E2E2" Opacity="0.9"/>
+                </Label.Foreground>
+            </Label>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="334" Margin="10,46,0,0" Stroke="Black" VerticalAlignment="Top" Width="753"/>
+            <Button x:Name="BuyTicketBtn" Content="Оплатить" HorizontalAlignment="Left" Margin="543,419,0,0" VerticalAlignment="Top" Width="220" Height="38" FontSize="14" Foreground="#E5FFFFFF" Background="#FF2E4967" Cursor="Hand" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle}" PreviewMouseLeftButtonDown="BuyBtn_PreviewMouseLeftButtonDown" Click="BuyTicketBtn_Click"/>
+            <Button x:Name="ClearBtn" Content="Отменить" HorizontalAlignment="Center" Margin="0,419,0,0" VerticalAlignment="Top" Width="220" Height="38" FontSize="14" Foreground="#E5FFFFFF" Background="#FF2E4967" Cursor="Hand" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle}" PreviewMouseLeftButtonDown="BuyBtn_PreviewMouseLeftButtonDown"/>
+            <Rectangle Stroke="Black" StrokeThickness="2" StrokeDashArray="4 4"
+                                                       SnapsToDevicePixels="True" Margin="145,46,627,112" Width="1"/>
+            <Label x:Name="TicketLabelVertical" Content="Авиабилет" HorizontalAlignment="Left" Margin="-10,153,0,0" VerticalAlignment="Top" FontSize="30" Foreground="#B2000000" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Width="178" Height="130" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="270"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Border BorderBrush="#33000000" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="151,100,0,0" VerticalAlignment="Top" Width="569"/>
+            <Border BorderBrush="#33000000" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="151,140,0,0" VerticalAlignment="Top" Width="569"/>
+            <Border BorderBrush="#33000000" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="151,180,0,0" VerticalAlignment="Top" Width="569"/>
+            <Border BorderBrush="#33000000" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="151,220,0,0" VerticalAlignment="Top" Width="569"/>
+            <Border BorderBrush="#33000000" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="151,260,0,0" VerticalAlignment="Top" Width="569"/>
+            <Border BorderBrush="#33000000" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="151,300,0,0" VerticalAlignment="Top" Width="569"/>
+            <Border BorderBrush="#33000000" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="151,340,0,0" VerticalAlignment="Top" Width="569"/>
+            <Label x:Name="idLabel" Content="Код билета:" HorizontalAlignment="Left" Margin="151,69,0,0" VerticalAlignment="Top" Width="116"/>
+            <Label x:Name="fromLabel" Content="От:" HorizontalAlignment="Left" Margin="151,109,0,0" VerticalAlignment="Top" Width="161"/>
+            <Label x:Name="toLabel" Content="До:" HorizontalAlignment="Left" Margin="317,109,0,0" VerticalAlignment="Top" Width="156"/>
+            <Label x:Name="DateFromLabel" Content="Время отправления:" HorizontalAlignment="Left" Margin="151,149,0,0" VerticalAlignment="Top" Width="291"/>
+            <Label x:Name="DateToLabel" Content="Время прибытия:" HorizontalAlignment="Left" Margin="151,189,0,0" VerticalAlignment="Top" Width="266"/>
+            <Label x:Name="AirlineLabel" Content="Авиакомпания" HorizontalAlignment="Left" Margin="151,229,0,0" VerticalAlignment="Top" Width="228"/>
+            <Label x:Name="typeLabel" Content="Тип самолёта:" HorizontalAlignment="Left" Margin="151,269,0,0" VerticalAlignment="Top" Width="187"/>
+            <Label x:Name="passLabel" Content="Пассажир:" HorizontalAlignment="Left" Margin="151,309,0,0" VerticalAlignment="Top" Width="552"/>
+            <Label x:Name="DateBuy" Content="Дата покупки:" VerticalAlignment="Top" Height="35" FontSize="18" VerticalContentAlignment="Center" Padding="20,5,5,5" Background="Transparent" HorizontalAlignment="Left" Margin="461,0,0,0" Width="302">
+                <Label.Foreground>
+                    <SolidColorBrush Color="#FFE8E2E2" Opacity="0.9"/>
+                </Label.Foreground>
+            </Label>
+            <Button x:Name="PrintBtn" Content="Скачать в pdf" HorizontalAlignment="Center" Margin="10,419,543,0" VerticalAlignment="Top" Width="220" Height="38" FontSize="14" Foreground="#E5FFFFFF" Background="#FF2E4967" Cursor="Hand" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle}" PreviewMouseLeftButtonDown="BuyBtn_PreviewMouseLeftButtonDown" Click="PrintBtn_Click"/>
+            <Label x:Name="CostLabel" Content="Стоимость:" HorizontalAlignment="Left" Margin="525,349,0,0" VerticalAlignment="Top" Width="195"/>
+        </Grid>
     </Grid>
     <Window.Resources>
     </Window.Resources>

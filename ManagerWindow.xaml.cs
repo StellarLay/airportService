@@ -42,6 +42,7 @@ namespace AirportService
             // Спрячем элементы некоторые или покажем
             rectangleItem1.Visibility = Visibility.Visible;
         }
+        int ticketId = 0;
 
         // При фокусе на 1-й итем
         private void item1_MouseEnter(object sender, MouseEventArgs e)
@@ -88,35 +89,140 @@ namespace AirportService
         // Клик на 1-й итем
         private void item1_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // Hover effect
-            if (rectangleItem2.Visibility == Visibility.Visible ||
-                rectangleItem3.Visibility == Visibility.Visible)
+            if (item1Grid.Visibility == Visibility.Hidden)
             {
-                rectangleItem2.Visibility = Visibility.Hidden;
-                rectangleItem3.Visibility = Visibility.Hidden;
+                if (stateComboBox.SelectedItem != null ||
+                passportBox.SelectedItem != null ||
+                textbox1.Text != "" ||
+                textbox2.Text != "" ||
+                textbox3.Text != "" ||
+                textboxLastname.Text != "" ||
+                textboxFirstname.Text != "" ||
+                textboxMiddlename.Text != "" ||
+                dateBirthdayPicker.SelectedDate != null ||
+                comboboxGender.SelectedItem != null)
+                {
+                    if (MessageBox.Show("Некоторые поля заполнены, вы действительно хотите переключиться?",
+                "Сообщение",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Information) == MessageBoxResult.Yes)
+                    {
+                        item1Grid.Visibility = Visibility.Visible;
+                        Item1GridPersonal.Visibility = Visibility.Hidden;
+                        rectangleItem2.Visibility = Visibility.Visible;
+                        nameItemLabel.Content = "Бронирование авиабилетов";
+                        item1ResultGrid.Visibility = Visibility.Hidden;
+                        if (rectangleItem2.Visibility == Visibility.Visible ||
+                            rectangleItem3.Visibility == Visibility.Visible)
+                        {
+                            rectangleItem2.Visibility = Visibility.Hidden;
+                            rectangleItem3.Visibility = Visibility.Hidden;
 
-                panelItem2.Visibility = Visibility.Hidden;
-                panelItem3.Visibility = Visibility.Hidden;
+                            panelItem3.Visibility = Visibility.Hidden;
+                        }
+                        ticketId = 0;
+                    }
+                }
+                else
+                {
+                    if (rectangleItem2.Visibility == Visibility.Visible ||
+                        rectangleItem3.Visibility == Visibility.Visible)
+                    {
+                        rectangleItem2.Visibility = Visibility.Hidden;
+                        rectangleItem3.Visibility = Visibility.Hidden;
+
+                        panelItem3.Visibility = Visibility.Hidden;
+                    }
+                }
             }
-            rectangleItem1.Visibility = Visibility.Visible;
-            nameItemLabel.Content = "Бронирование авиабилетов";
+            else
+            {
+                if (rectangleItem2.Visibility == Visibility.Visible ||
+                    rectangleItem3.Visibility == Visibility.Visible)
+                {
+                    rectangleItem2.Visibility = Visibility.Hidden;
+                    rectangleItem3.Visibility = Visibility.Hidden;
+
+                    panelItem3.Visibility = Visibility.Hidden;
+                }
+                if (item1ResultGrid.Visibility == Visibility.Visible)
+                {
+                    item1ResultGrid.Visibility = Visibility.Hidden;
+                }
+                rectangleItem1.Visibility = Visibility.Visible;
+                nameItemLabel.Content = "Бронирование авиабилетов";
+            }
         }
 
         // Клик на 2-й итем
         private void item2_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // Hover effect
-            if (rectangleItem1.Visibility == Visibility.Visible || 
-                rectangleItem3.Visibility == Visibility.Visible)
+            if(item1Grid.Visibility == Visibility.Hidden)
             {
-                rectangleItem1.Visibility = Visibility.Hidden;
-                rectangleItem3.Visibility = Visibility.Hidden;
+                if (stateComboBox.SelectedItem != null ||
+                passportBox.SelectedItem != null ||
+                textbox1.Text != "" ||
+                textbox2.Text != "" ||
+                textbox3.Text != "" ||
+                textboxLastname.Text != "" ||
+                textboxFirstname.Text != "" ||
+                textboxMiddlename.Text != "" ||
+                dateBirthdayPicker.SelectedDate != null ||
+                comboboxGender.SelectedItem != null)
+                {
+                    if (MessageBox.Show("Некоторые поля заполнены, вы действительно хотите переключиться?",
+                "Сообщение",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Information) == MessageBoxResult.Yes)
+                    {
+                        item1Grid.Visibility = Visibility.Visible;
+                        Item1GridPersonal.Visibility = Visibility.Hidden;
+                        rectangleItem2.Visibility = Visibility.Visible;
+                        nameItemLabel.Content = "Продажа авиабилетов";
+                        item1ResultGrid.Visibility = Visibility.Hidden;
+                        if (rectangleItem1.Visibility == Visibility.Visible ||
+                        rectangleItem3.Visibility == Visibility.Visible)
+                        {
+                            rectangleItem1.Visibility = Visibility.Hidden;
+                            rectangleItem3.Visibility = Visibility.Hidden;
+                            TicketGrid.Visibility = Visibility.Hidden;
 
-                panelItem3.Visibility = Visibility.Hidden;
+                            panelItem3.Visibility = Visibility.Hidden;
+                        }
+                        ticketId = 0;
+                    }
+                }
+                else
+                {
+                    if (rectangleItem1.Visibility == Visibility.Visible ||
+                        rectangleItem3.Visibility == Visibility.Visible)
+                    {
+                        rectangleItem1.Visibility = Visibility.Hidden;
+                        rectangleItem3.Visibility = Visibility.Hidden;
+                        TicketGrid.Visibility = Visibility.Hidden;
+
+                        panelItem3.Visibility = Visibility.Hidden;
+                    }
+                }
             }
-            rectangleItem2.Visibility = Visibility.Visible;
-            panelItem2.Visibility = Visibility.Visible;
-            nameItemLabel.Content = "Продажа авиабилетов";
+            else
+            {
+                if (rectangleItem1.Visibility == Visibility.Visible ||
+                        rectangleItem3.Visibility == Visibility.Visible)
+                {
+                    rectangleItem1.Visibility = Visibility.Hidden;
+                    rectangleItem3.Visibility = Visibility.Hidden;
+
+                    panelItem3.Visibility = Visibility.Hidden;
+                }
+                if (item1ResultGrid.Visibility == Visibility.Visible)
+                {
+                    item1ResultGrid.Visibility = Visibility.Hidden;
+                }
+                rectangleItem2.Visibility = Visibility.Visible;
+                TicketGrid.Visibility = Visibility.Hidden;
+                nameItemLabel.Content = "Продажа авиабилетов";
+            }
         }
 
         // Клик на 3-й итем
@@ -128,8 +234,6 @@ namespace AirportService
             {
                 rectangleItem1.Visibility = Visibility.Hidden;
                 rectangleItem2.Visibility = Visibility.Hidden;
-
-                panelItem2.Visibility = Visibility.Hidden;
             }
             rectangleItem3.Visibility = Visibility.Visible;
             panelItem3.Visibility = Visibility.Visible;
@@ -199,18 +303,33 @@ namespace AirportService
         // Кнопка "Далее"
         private void item1NextBtn_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // Загрузим селект бокс "Гражданство"
-            var query = from states in dataEntities.States
-                        select new { states.name };
-            stateComboBox.ItemsSource = query.ToList();
-            stateComboBox.DisplayMemberPath = "name";
-            stateComboBox.SelectedIndex = 0;
+            if(ticketId == 0)
+            {
+                MessageBox.Show("Выберите билет!");
+            }
+            else
+            {
+                // Загрузим селект бокс "Гражданство"
+                var query = from states in dataEntities.States
+                            select new { states.name };
+                stateComboBox.ItemsSource = query.ToList();
+                stateComboBox.DisplayMemberPath = "name";
+                stateComboBox.SelectedIndex = 0;
 
-            Item1GridPersonal.Visibility = Visibility.Visible;
-            item1Grid.Visibility = Visibility.Hidden;
+                Item1GridPersonal.Visibility = Visibility.Visible;
+                item1Grid.Visibility = Visibility.Hidden;
+            }
+
+            if(rectangleItem2.Visibility == Visibility.Visible)
+            {
+                BuyBtn.Content = "Перейти к оплате";
+            }
+            else
+            {
+                BuyBtn.Content = "Забронировать";
+            }
         }
-
-        int ticketId = 0;
+        
         // Кнопка "Забронировать"
         private void BuyBtn_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -234,67 +353,101 @@ namespace AirportService
             }
             else
             {
-                int getSerialPassport = Convert.ToInt32(textbox2.Text);
-                var getPassenger = dataEntities.Passengers.Where(x => x.passport == getSerialPassport).FirstOrDefault();
-                if (getPassenger != null)
+                // Если мы покупаем билет
+                if(BuyBtn.Content.ToString() == "Перейти к оплате")
                 {
-                    MessageBox.Show("Пассажир с такими данными паспорта уже есть в базе!");
+                    // Вытащим с БД выбранный рейс
+                    var dateFrom = dataEntities.Flights.Where(w => w.id == ticketId).Select(s => s.deptime).FirstOrDefault();
+                    var dateTo = dataEntities.Flights.Where(w => w.id == ticketId).Select(s => s.destime).FirstOrDefault();
+                    var cost = dataEntities.Flights.Where(w => w.id == ticketId).Select(s => s.ticketprice).FirstOrDefault();
+
+                    var airlineId = dataEntities.Flights.Where(w => w.id == ticketId).Select(s => s.airline).FirstOrDefault();
+                    var airline = dataEntities.Airlines.Where(w => w.id == airlineId).Select(s => s.name).FirstOrDefault();
+
+                    var typeAircraftId = dataEntities.Flights.Where(w => w.id == ticketId).Select(s => s.typeaircraft).FirstOrDefault();
+                    var typeAircraft = dataEntities.Aircraft.Where(w => w.id == typeAircraftId).Select(s => s.name).FirstOrDefault();
+
+                    TicketGrid.Visibility = Visibility.Visible;
+                    Item1GridPersonal.Visibility = Visibility.Hidden;
+                    // Заполним форму билета
+                    idLabel.Content = "Код билета: " + ticketId;
+                    fromLabel.Content = "От: " + item1DepCombo.Text;
+                    toLabel.Content = "До: " + item1DesCombo.Text;
+                    DateFromLabel.Content = "Время отправления: " + dateFrom;
+                    DateToLabel.Content = "Время прибытия: " + dateTo;
+                    AirlineLabel.Content = "Авиакомпания: " + airline;
+                    typeLabel.Content = "Тип самолета: " + typeAircraft;
+                    passLabel.Content = "Пассажир: " + textboxLastname.Text + " " + textboxFirstname.Text + " " + textboxMiddlename.Text;
+                    CostLabel.Content = "Стоимость: " + cost;
+                    DateBuy.Content = "Дата покупки: " + DateTime.Now.ToString();
+
+                    PrintBtn.Visibility = Visibility.Hidden;
                 }
+                // Если бронируем
                 else
                 {
-                    int gender = 1;
-                    int state = 1;
-                    if (comboboxGender.Text == "женский")
+                    int getSerialPassport = Convert.ToInt32(textbox2.Text);
+                    var getPassenger = dataEntities.Passengers.Where(x => x.passport == getSerialPassport).FirstOrDefault();
+                    if (getPassenger != null)
                     {
-                        gender = 2;
+                        MessageBox.Show("Пассажир с такими данными паспорта уже есть в базе!");
                     }
-                    switch (stateComboBox.Text)
+                    else
                     {
-                        case "Российская федерация":
-                            state = 1;
-                            break;
-                        case "Американское гражданство":
-                            state = 2;
-                            break;
-                        case "Римское гражданство":
-                            state = 3;
-                            break;
+                        int gender = 1;
+                        int state = 1;
+                        if (comboboxGender.Text == "женский")
+                        {
+                            gender = 2;
+                        }
+                        switch (stateComboBox.Text)
+                        {
+                            case "Российская федерация":
+                                state = 1;
+                                break;
+                            case "Американское гражданство":
+                                state = 2;
+                                break;
+                            case "Римское гражданство":
+                                state = 3;
+                                break;
+                        }
+
+                        // Внесём пассажира в соответствующую таблицу в БД
+                        Passengers passenger = new Passengers
+                        {
+                            firstname = textboxFirstname.Text,
+                            lastname = textboxLastname.Text,
+                            middlename = textboxMiddlename.Text,
+                            gender = gender,
+                            datebirthday = dateBirthdayPicker.DisplayDate,
+                            state = state,
+                            passport = getSerialPassport
+                        };
+                        dataEntities.Passengers.Add(passenger);
+                        dataEntities.SaveChanges();
+
+                        MessageBox.Show(
+                            "Билет успешно забронирован!",
+                            "Информация",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
                     }
 
-                    // Внесём пассажира в соответствующую таблицу в БД
-                    Passengers passenger = new Passengers
+                    int getIdEmploye = dataEntities.Employees.Where(w => w.login == App.My.username).Select(s => s.id).FirstOrDefault();
+                    // Далее после внесения пассажира бронируем билет
+                    Tickets ticket = new Tickets
                     {
                         firstname = textboxFirstname.Text,
                         lastname = textboxLastname.Text,
                         middlename = textboxMiddlename.Text,
-                        gender = gender,
-                        datebirthday = dateBirthdayPicker.DisplayDate,
-                        state = state,
-                        passport = getSerialPassport
+                        employee = getIdEmploye,
+                        flight = ticketId,
+                        date = DateTime.Now
                     };
-                    dataEntities.Passengers.Add(passenger);
+                    dataEntities.Tickets.Add(ticket);
                     dataEntities.SaveChanges();
-
-                    MessageBox.Show(
-                        "Билет успешно забронирован!",
-                        "Информация",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
                 }
-
-                int getIdEmploye = dataEntities.Employees.Where(w => w.login == App.My.username).Select(s => s.id).FirstOrDefault();
-                // Далее после внесения пассажира бронируем билет
-                Tickets ticket = new Tickets
-                {
-                    firstname = textboxFirstname.Text,
-                    lastname = textboxLastname.Text,
-                    middlename = textboxMiddlename.Text,
-                    employee = getIdEmploye,
-                    flight = ticketId,
-                    date = DateTime.Now
-                };
-                dataEntities.Tickets.Add(ticket);
-                dataEntities.SaveChanges();
             }
         }
 
@@ -308,6 +461,65 @@ namespace AirportService
         private void Border_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        // Кнопка "Оплатить"
+        private void BuyTicketBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int getSerialPassport = Convert.ToInt32(textbox2.Text);
+            var getPassenger = dataEntities.Passengers.Where(x => x.passport == getSerialPassport).FirstOrDefault();
+            if (getPassenger != null)
+            {
+                MessageBox.Show("Пассажир с такими данными паспорта уже есть в базе!");
+            }
+            else
+            {
+                int gender = 1;
+                int state = 1;
+                if (comboboxGender.Text == "женский")
+                {
+                    gender = 2;
+                }
+                switch (stateComboBox.Text)
+                {
+                    case "Российская федерация":
+                        state = 1;
+                        break;
+                    case "Американское гражданство":
+                        state = 2;
+                        break;
+                    case "Римское гражданство":
+                        state = 3;
+                        break;
+                }
+
+                // Внесём пассажира в соответствующую таблицу в БД
+                Passengers passenger = new Passengers
+                {
+                    firstname = textboxFirstname.Text,
+                    lastname = textboxLastname.Text,
+                    middlename = textboxMiddlename.Text,
+                    gender = gender,
+                    datebirthday = dateBirthdayPicker.DisplayDate,
+                    state = state,
+                    passport = getSerialPassport
+                };
+                dataEntities.Passengers.Add(passenger);
+                dataEntities.SaveChanges();
+
+                MessageBox.Show(
+                    "Билет приобретён!",
+                    "Информация",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
+            PrintBtn.Visibility = Visibility.Visible;
+        }
+
+        // Кнопка "Скачать в pdf"
+        private void PrintBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
