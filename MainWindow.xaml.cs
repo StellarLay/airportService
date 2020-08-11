@@ -77,7 +77,6 @@ namespace AirportService
         // Клик по кнопке Авторизоваться
         private void loginBtn_Click(object sender, RoutedEventArgs e)
         {
-
             // Если поля пустые то выдать ошибку
             if(loginText.Text == "Имя пользователя" && passText.Text == "Пароль")
             {
@@ -95,6 +94,7 @@ namespace AirportService
 
                 // Проводим авторизацию
                 var getLogin = user.FirstOrDefault(p => p.login == login && p.password == pass);
+                App.My.roleId = user.Where(w => w.login == login && w.password == pass).Select(s => s.roleId).FirstOrDefault();
                 if (getLogin == null)
                 {
                     errorLabel.Content = "Неверный логин или пароль";

@@ -24,6 +24,7 @@ namespace AirportService
         public static class My
         {
             internal static string username;
+            internal static int roleId;
         }
 
     }

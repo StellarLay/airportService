@@ -23,12 +23,12 @@ namespace AirportService
         public int id { get; set; }
         public string departure { get; set; }
         public string destination { get; set; }
+        public System.DateTime date { get; set; }
+        public System.TimeSpan deptime { get; set; }
+        public System.TimeSpan destime { get; set; }
         public int airline { get; set; }
         public int typeaircraft { get; set; }
         public int ticketprice { get; set; }
-        public System.TimeSpan deptime { get; set; }
-        public System.TimeSpan destime { get; set; }
-        public System.DateTime date { get; set; }
     
         public virtual Aircraft Aircraft { get; set; }
         public virtual Airlines Airlines { get; set; }

@@ -27,6 +27,7 @@ namespace AirportService
     
         public virtual DbSet<Aircraft> Aircraft { get; set; }
         public virtual DbSet<Airlines> Airlines { get; set; }
+        public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
         public virtual DbSet<Flights> Flights { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
@@ -34,6 +35,6 @@ namespace AirportService
         public virtual DbSet<States> States { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tickets> Tickets { get; set; }
-        public virtual DbSet<City> City { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
     }
 }

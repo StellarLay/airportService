@@ -37,6 +37,7 @@
           <Property Name="phone" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="roleId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Flights">
           <Key>
@@ -72,6 +73,13 @@
           <Property Name="state" Type="int" Nullable="false" />
           <Property Name="passport" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="States">
           <Key>
             <PropertyRef Name="id" />
@@ -101,6 +109,18 @@
           <Property Name="flight" Type="int" Nullable="false" />
           <Property Name="date" Type="datetime" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Employees_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="roleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Flights_Aircraft">
           <End Role="Aircraft" Type="Self.Aircraft" Multiplicity="1" />
           <End Role="Flights" Type="Self.Flights" Multiplicity="*" />
@@ -181,9 +201,14 @@
           <EntitySet Name="Flights" EntityType="Self.Flights" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Passengers" EntityType="Self.Passengers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Employees_Roles" Association="Self.FK_Employees_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
           <AssociationSet Name="FK_Flights_Aircraft" Association="Self.FK_Flights_Aircraft">
             <End Role="Aircraft" EntitySet="Aircraft" />
             <End Role="Flights" EntitySet="Flights" />
@@ -229,6 +254,13 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Flights" Relationship="Self.FK_Flights_Airlines" FromRole="Airlines" ToRole="Flights" />
         </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="id" />
@@ -241,6 +273,8 @@
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Employees" FromRole="Employees" ToRole="Tickets" />
+          <Property Name="roleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="AirportServiceModel.FK_Employees_Roles" FromRole="Employees" ToRole="Roles" />
         </EntityType>
         <EntityType Name="Flights">
           <Key>
@@ -249,15 +283,15 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="departure" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="destination" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="deptime" Type="Time" Nullable="false" Precision="4" />
+          <Property Name="destime" Type="Time" Nullable="false" Precision="4" />
           <Property Name="airline" Type="Int32" Nullable="false" />
           <Property Name="typeaircraft" Type="Int32" Nullable="false" />
           <Property Name="ticketprice" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Aircraft" Relationship="Self.FK_Flights_Aircraft" FromRole="Flights" ToRole="Aircraft" />
           <NavigationProperty Name="Airlines" Relationship="Self.FK_Flights_Airlines" FromRole="Flights" ToRole="Airlines" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Flights" FromRole="Flights" ToRole="Tickets" />
-          <Property Name="deptime" Type="Time" Nullable="false" Precision="4" />
-          <Property Name="destime" Type="Time" Nullable="false" Precision="4" />
-          <Property Name="date" Type="DateTime" Precision="3" Nullable="false" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -389,6 +423,7 @@
         <EntityContainer Name="AirportServiceEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Aircraft" EntityType="Self.Aircraft" />
           <EntitySet Name="Airlines" EntityType="Self.Airlines" />
+          <EntitySet Name="City" EntityType="Self.City" />
           <EntitySet Name="Employees" EntityType="Self.Employees" />
           <EntitySet Name="Flights" EntityType="Self.Flights" />
           <EntitySet Name="Gender" EntityType="Self.Gender" />
@@ -420,15 +455,32 @@
             <End Role="States" EntitySet="States" />
             <End Role="Passengers" EntitySet="Passengers" />
           </AssociationSet>
-          <EntitySet Name="City" EntityType="AirportServiceModel.City" />
+          <EntitySet Name="Roles" EntityType="AirportServiceModel.Roles" />
+          <AssociationSet Name="FK_Employees_Roles" Association="AirportServiceModel.FK_Employees_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="City">
+        <EntityType Name="Roles">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employees" Relationship="AirportServiceModel.FK_Employees_Roles" FromRole="Roles" ToRole="Employees" />
         </EntityType>
+        <Association Name="FK_Employees_Roles">
+          <End Type="AirportServiceModel.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="AirportServiceModel.Employees" Role="Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="roleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -451,9 +503,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="AirportServiceModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="AirportServiceModel.Employees">
               <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="roleId" ColumnName="roleId" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="firstname" ColumnName="firstname" />
                 <ScalarProperty Name="lastname" ColumnName="lastname" />
@@ -467,12 +528,12 @@
           <EntitySetMapping Name="Flights">
             <EntityTypeMapping TypeName="AirportServiceModel.Flights">
               <MappingFragment StoreEntitySet="Flights">
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="destime" ColumnName="destime" />
-                <ScalarProperty Name="deptime" ColumnName="deptime" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="departure" ColumnName="departure" />
                 <ScalarProperty Name="destination" ColumnName="destination" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="deptime" ColumnName="deptime" />
+                <ScalarProperty Name="destime" ColumnName="destime" />
                 <ScalarProperty Name="airline" ColumnName="airline" />
                 <ScalarProperty Name="typeaircraft" ColumnName="typeaircraft" />
                 <ScalarProperty Name="ticketprice" ColumnName="ticketprice" />
@@ -533,11 +594,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="City">
-            <EntityTypeMapping TypeName="AirportServiceModel.City">
-              <MappingFragment StoreEntitySet="City">
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="AirportServiceModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

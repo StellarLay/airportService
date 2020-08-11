@@ -12,25 +12,18 @@ namespace AirportService
     using System;
     using System.Collections.Generic;
     
-    public partial class Employees
+    public partial class Roles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employees()
+        public Roles()
         {
-            this.Tickets = new HashSet<Tickets>();
+            this.Employees = new HashSet<Employees>();
         }
     
-        public int id { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public string address { get; set; }
-        public string phone { get; set; }
-        public string login { get; set; }
-        public string password { get; set; }
-        public int roleId { get; set; }
+        public int Id { get; set; }
+        public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tickets> Tickets { get; set; }
-        public virtual Roles Roles { get; set; }
+        public virtual ICollection<Employees> Employees { get; set; }
     }
 }

@@ -73,8 +73,16 @@ namespace AirportService
                 this.Close();
 
                 // Открываем форму
-                ManagerWindow form = new ManagerWindow();
-                form.Show();
+                if(App.My.roleId == 2)
+                {
+                    ManagerWindow form = new ManagerWindow();
+                    form.Show();
+                }
+                else
+                {
+                    AdminWindow form = new AdminWindow();
+                    form.Show();
+                }
             }
         }
     }
