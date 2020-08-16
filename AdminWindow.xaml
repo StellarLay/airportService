@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportService"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="600" Width="1000" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Background="#FF1F3144" WindowStyle="None">
+        Title="AdminWindow" Height="600" Width="1000" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Background="#FF1F3144" WindowStyle="None" Icon="resources/trayIcon.png">
     <Grid>
         <local:maximizeWindow Height="43" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
         <Rectangle x:Name="menuRectangle" Fill="#FF162432" HorizontalAlignment="Left" Width="200" Margin="0,0,0,-0.4"/>
@@ -27,16 +27,16 @@
         <TextBlock x:Name="itemImg1" Text="&#xF02E;" Style="{StaticResource FontAwesome}" Foreground="White" FontSize="28" Margin="21,123,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30" Height="28"/>
         <Label x:Name="item1" Content="Статистика" Margin="56,122,0,0" Padding="5,0" VerticalContentAlignment="Center" FontSize="15" Foreground="White" Cursor="Hand" MouseEnter="item1_MouseEnter" MouseLeave="item1_MouseLeave" PreviewMouseLeftButtonDown="item1_PreviewMouseLeftButtonDown" HorizontalAlignment="Left" Width="121" Height="28" VerticalAlignment="Top"/>
         <TextBlock x:Name="itemImg2" Text="&#xf0c0;" Style="{StaticResource FontAwesome}" Foreground="White" FontSize="28" Margin="17,225,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30" Height="28"/>
-        <Label x:Name="item2" Content="Сотрудники" Margin="56,226,0,0" Padding="5,0" VerticalContentAlignment="Center" FontSize="15" Foreground="White" Cursor="Hand" MouseEnter="item2_MouseEnter" MouseLeave="item2_MouseLeave" PreviewMouseLeftButtonDown="item1_PreviewMouseLeftButtonDown" HorizontalAlignment="Left" Width="121" Height="28" VerticalAlignment="Top"/>
+        <Label x:Name="item2" Content="Сотрудники" Margin="56,226,0,0" Padding="5,0" VerticalContentAlignment="Center" FontSize="15" Foreground="White" Cursor="Hand" MouseEnter="item2_MouseEnter" MouseLeave="item2_MouseLeave" PreviewMouseLeftButtonDown="item2_PreviewMouseLeftButtonDown" HorizontalAlignment="Left" Width="121" Height="28" VerticalAlignment="Top"/>
         <TextBlock x:Name="itemImg1_Copy1" Text="&#xf0a5;" Style="{StaticResource FontAwesome}" Foreground="White" FontSize="28" Margin="17,0,0,27" HorizontalAlignment="Left" Width="30" Height="28" VerticalAlignment="Bottom"/>
         <Label x:Name="itemExit" Content="Выход" Margin="56,0,0,24" Padding="5,0" VerticalContentAlignment="Center" FontSize="15" Foreground="White" Cursor="Hand" HorizontalAlignment="Left" Width="121" Height="28" VerticalAlignment="Bottom" PreviewMouseLeftButtonDown="itemExit_PreviewMouseLeftButtonDown"/>
-        <StackPanel x:Name="BtnsStackPanel" HorizontalAlignment="Center" Height="431" Margin="205,120,0,0" VerticalAlignment="Top" Width="400" Visibility="Hidden">
+        <StackPanel x:Name="BtnsStackPanel" HorizontalAlignment="Center" Height="431" Margin="205,120,0,0" VerticalAlignment="Top" Width="400">
             <Button x:Name="StatisticOneBtn" Content="Количество билетов по рейсам" VerticalAlignment="Top" Height="86" FontSize="14" Style="{DynamicResource ButtonStyle}" Background="#FF315377" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="400" HorizontalAlignment="Left" Cursor="Hand" Click="StatisticOneBtn_Click"/>
-            <Button x:Name="StatisticTwoBtn" Content="Количество проданных авиабилетов" VerticalAlignment="Top" Height="86" FontSize="14" Style="{DynamicResource ButtonStyle}" Background="#FF315377" Foreground="White" Width="400" HorizontalAlignment="Left" Margin="0,40,0,0" Cursor="Hand"/>
+            <Button x:Name="StatisticTwoBtn" Content="Количество проданных авиабилетов" VerticalAlignment="Top" Height="86" FontSize="14" Style="{DynamicResource ButtonStyle}" Background="#FF315377" Foreground="White" Width="400" HorizontalAlignment="Left" Margin="0,40,0,0" Cursor="Hand" Click="StatisticTwoBtn_Click"/>
         </StackPanel>
-        <Grid x:Name="StatisticOneGrid" Height="410" Margin="230,120,30,0" VerticalAlignment="Top">
+        <Grid x:Name="StatisticOneGrid" Height="410" Margin="230,120,30,0" VerticalAlignment="Top" Visibility="Hidden">
             <Label x:Name="FlightLabelStatistic" Content="Рейс:" HorizontalAlignment="Left" Margin="15,23,0,0" VerticalAlignment="Top" Foreground="#FFCDCDCD" FontSize="16" Width="59"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="75,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Style="{DynamicResource TextBoxStyle}" BorderBrush="{x:Null}" Padding="5,0,0,0" VerticalContentAlignment="Center" Foreground="#FFD9D9D9" Background="#FF192737"/>
+            <TextBox x:Name="flightLabelStatistic" HorizontalAlignment="Left" Height="23" Margin="75,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Style="{DynamicResource TextBoxStyle}" BorderBrush="{x:Null}" Padding="5,0,0,0" VerticalContentAlignment="Center" Foreground="#FFD9D9D9" Background="#FF192737"/>
             <Label x:Name="PeriodLabelStatistic" Content="Период:" HorizontalAlignment="Left" Margin="15,85,0,0" VerticalAlignment="Top" Foreground="#FFCDCDCD" FontSize="16" Width="81"/>
             <Label x:Name="FromLabelStatistic" Content="От:" HorizontalAlignment="Left" Margin="15,125,0,0" VerticalAlignment="Top" Foreground="#FFCDCDCD" FontSize="16" Width="59"/>
             <Label x:Name="ToLabelStatistic" Content="До:" HorizontalAlignment="Left" Margin="219,125,0,0" VerticalAlignment="Top" Foreground="#FFCDCDCD" FontSize="16" Width="52"/>
@@ -44,9 +44,15 @@
             <DatePicker x:Name="ToStatisticPicker" HorizontalAlignment="Left" Margin="267,129,0,0" VerticalAlignment="Top" Width="134" Style="{DynamicResource DatePickerStyle}" Foreground="#FFDCD9D9" Padding="5,2,2,2" VerticalContentAlignment="Center"/>
             <Button x:Name="BackStatisticBtn" Content="Назад" HorizontalAlignment="Left" Margin="580,30,0,0" VerticalAlignment="Top" Width="150" Height="30" Foreground="#FFCECECE" Style="{DynamicResource ButtonStyle}" Background="#FF315377" FontSize="14" Cursor="Hand"/>
             <Button x:Name="ClearStatisticBtn1" Content="Сбросить" HorizontalAlignment="Left" Margin="580,80,0,0" VerticalAlignment="Top" Width="150" Height="30" Foreground="#FFCECECE" Style="{DynamicResource ButtonStyle}" Background="#FF315377" FontSize="14" Cursor="Hand"/>
-            <Button x:Name="ApplyStatisticBtn" Content="Применить" HorizontalAlignment="Left" Margin="580,130,0,0" VerticalAlignment="Top" Width="150" Height="30" Foreground="#FFCECECE" Style="{DynamicResource ButtonStyle}" Background="#FF315377" FontSize="14" Cursor="Hand"/>
-            <Label x:Name="ResultStatisticLabel" Content="" HorizontalAlignment="Left" Margin="10,292,0,0" VerticalAlignment="Top" Width="720" Height="52" FontSize="16" Foreground="Gainsboro" VerticalContentAlignment="Center"/>
+            <Button x:Name="ApplyStatisticBtn" Content="Применить" HorizontalAlignment="Left" Margin="580,130,0,0" VerticalAlignment="Top" Width="150" Height="30" Foreground="#FFCECECE" Style="{DynamicResource ButtonStyle}" Background="#FF315377" FontSize="14" Cursor="Hand" Click="ApplyStatisticBtn_Click"/>
+            <Label x:Name="ResultStatisticLabel" Content="" HorizontalAlignment="Left" Margin="10,292,0,0" VerticalAlignment="Top" Width="720" Height="52" FontSize="16" Foreground="Gainsboro" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         </Grid>
         <Label x:Name="StatisticHeadLabel" Content="" HorizontalAlignment="Left" Margin="230,28,0,0" VerticalAlignment="Top" Width="531" Height="39" FontSize="16" Foreground="#FFE8E8E8"/>
+        <Grid x:Name="EmployeesGrid" Margin="230,123,30,27" Visibility="Hidden">
+            <Button x:Name="AddEmployBtn" Content="Добавить сотрудника" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="215" Height="40" Background="#FF315377" Foreground="Gainsboro" FontSize="14" Style="{DynamicResource ButtonStyle}" Cursor="Hand" Click="AddEmployBtn_Click"/>
+            <Button x:Name="DeleteEmployBtn" Content="Удалить сотрудника" HorizontalAlignment="Left" Margin="261,10,0,0" VerticalAlignment="Top" Width="215" Height="40" Background="#FF315377" Foreground="Gainsboro" FontSize="14" Style="{DynamicResource ButtonStyle}" Cursor="Hand" Click="DeleteEmployBtn_Click"/>
+            <DataGrid x:Name="EmployeesDataGrid" HeadersVisibility="Column" HorizontalAlignment="Left" Height="349" Margin="10,91,0,0" VerticalAlignment="Top" Width="720" Style="{DynamicResource DataGridStyle}" Background="#FF263D58" ColumnWidth="*" FontSize="14" SelectionChanged="EmployeesDataGrid_SelectionChanged"/>
+            <Button x:Name="UpdateEmployBtn" Content="Обновить" HorizontalAlignment="Left" Margin="515,10,0,0" VerticalAlignment="Top" Width="215" Height="40" Background="#FF315377" Foreground="Gainsboro" FontSize="14" Style="{DynamicResource ButtonStyle}" Cursor="Hand" Click="UpdateEmployBtn_Click"/>
+        </Grid>
     </Grid>
 </Window>

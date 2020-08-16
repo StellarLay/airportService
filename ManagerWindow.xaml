@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportService"
         mc:Ignorable="d"
-        Title="Окно кассира" Height="600" Width="1000" WindowStartupLocation="CenterScreen" Background="#FF1F3144" WindowStyle="None" ResizeMode="CanMinimize">
+        Title="Окно кассира" Height="600" Width="1000" WindowStartupLocation="CenterScreen" Background="#FF1F3144" WindowStyle="None" ResizeMode="CanMinimize" Icon="resources/trayIcon.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="207*"/>

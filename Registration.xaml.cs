@@ -19,9 +19,64 @@ namespace AirportService
     /// </summary>
     public partial class Registration : Window
     {
+        AirportServiceEntities dataEntities = new AirportServiceEntities();
+
         public Registration()
         {
             InitializeComponent();
+        }
+
+        // Кнопка "Регистрация"
+        private void regBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(nameInput.Text == "" ||
+                surnameInput.Text == "" ||
+                addressInput.Text == "" ||
+                phoneInput.Text == "" ||
+                loginInput.Text == "" ||
+                passInput.Text == "" ||
+                confirmPassInput.Text == "" ||
+                AdministatorRadio.IsChecked == false &&
+                ManagerRadio.IsChecked == false)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
+            else
+            {
+                if(confirmPassInput.Text != passInput.Text)
+                {
+                    MessageBox.Show("Подтверждающий пароль не совпадает");
+                }
+                else
+                {
+                    int roleId = 0;
+                    if (AdministatorRadio.IsChecked == true)
+                    {
+                        roleId = 1;
+                    }
+                    else
+                    {
+                        roleId = 2;
+                    }
+
+                    Employees employ = new Employees
+                    {
+                        firstname = nameInput.Text,
+                        lastname = surnameInput.Text,
+                        address = addressInput.Text,
+                        phone = phoneInput.Text,
+                        login = loginInput.Text,
+                        password = passInput.Text,
+                        roleId = roleId
+                    };
+
+                    dataEntities.Employees.Add(employ);
+                    dataEntities.SaveChanges();
+
+                    MessageBox.Show("Сотрудник успешно добавлен!");
+                    this.Close();
+                }
+            }
         }
     }
 }

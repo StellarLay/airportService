@@ -6,16 +6,15 @@
         xmlns:local="clr-namespace:AirportService"
         mc:Ignorable="d"
         Title="Регистрация" Height="740.8" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="True">
-
-    <Grid>
+    <Grid Margin="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="41*"/>
             <RowDefinition Height="460*"/>
         </Grid.RowDefinitions>
         <local:UserControlWindows Height="40" VerticalAlignment="Top" Width="360" HorizontalAlignment="Right"/>
-        <Label x:Name="regLabel" Content="Регистрация" HorizontalAlignment="Center" Height="34" Margin="10,0" VerticalAlignment="Top" Width="340" FontSize="20" FontFamily="Rockwell Extra Bold" Foreground="White" Opacity="0.9" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Background="Transparent" Grid.Row="1"/>
-        <Label x:Name="nameLabel" Content="Имя" Height="31" Margin="30,61,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-        <TextBox x:Name="nameInput" Height="35" Margin="30,92,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1" >
+        <Label x:Name="regLabel" Content="Регистрация" HorizontalAlignment="Center" Height="34" Margin="30,41,30,0" VerticalAlignment="Top" Width="340" FontSize="20" FontFamily="Rockwell Extra Bold" Foreground="White" Opacity="0.9" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Background="Transparent" Grid.RowSpan="2"/>
+        <Label x:Name="nameLabel" Content="Имя" Height="31" Margin="30,27.2,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+        <TextBox x:Name="nameInput" Height="35" Margin="30,58.2,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1" >
             <TextBox.Background>
                 <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
             </TextBox.Background>
@@ -40,11 +39,11 @@
                 </ControlTemplate>
             </TextBox.Resources>
         </TextBox>
-        <Label x:Name="surnameLabel" Content="Фамилия" Height="31" Margin="30,132,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-        <Label x:Name="phoneLabel" Content="Телефон" Height="31" Margin="30,277.2,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-        <Label x:Name="passLabel" Content="Пароль" Height="30" Margin="30,420.2,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-        <Label x:Name="confirmPassLabel" Content="Повторите пароль" Height="31" Margin="30,491.2,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-        <TextBox x:Name="surnameInput" Height="35" Margin="30,163,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
+        <Label x:Name="surnameLabel" Content="Фамилия" Height="31" Margin="30,98.2,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+        <Label x:Name="phoneLabel" Content="Телефон" Height="31" Margin="30,243.2,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+        <Label x:Name="passLabel" Content="Пароль" Height="30" Margin="30,386.2,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+        <Label x:Name="confirmPassLabel" Content="Повторите пароль" Height="31" Margin="30,457.2,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+        <TextBox x:Name="surnameInput" Height="35" Margin="30,129.2,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type TextBox}">
                     <Setter Property="Opacity" Value="0.6"/>
@@ -69,7 +68,7 @@
                 <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
             </TextBox.Background>
         </TextBox>
-        <TextBox x:Name="phoneInput" Height="35" Margin="30,308.2,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
+        <TextBox x:Name="phoneInput" Height="35" Margin="30,274.2,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type TextBox}">
                     <Setter Property="Opacity" Value="0.6"/>
@@ -94,7 +93,7 @@
                 <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
             </TextBox.Background>
         </TextBox>
-        <TextBox x:Name="passInput" Height="35" Margin="30,450.2,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
+        <TextBox x:Name="passInput" Height="35" Margin="30,416.2,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type TextBox}">
                     <Setter Property="Opacity" Value="0.6"/>
@@ -119,7 +118,7 @@
                 <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
             </TextBox.Background>
         </TextBox>
-        <TextBox x:Name="confirmPassInput" Height="35" Margin="30,522.2,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
+        <TextBox x:Name="confirmPassInput" Height="35" Margin="30,488.2,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type TextBox}">
                     <Setter Property="Opacity" Value="0.6"/>
@@ -144,13 +143,9 @@
                 <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
             </TextBox.Background>
         </TextBox>
-        <Button x:Name="regBtn" Content="Зарегистрироваться" Height="42" Margin="48,587.2,48,0" VerticalAlignment="Top" FontSize="16" Background="#FF305174" Foreground="White" BorderBrush="{x:Null}" Style="{DynamicResource RoundYgl}" Cursor="Hand" Grid.Row="1"/>
-        <Label Tag="Авторизация" Height="30" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="White" Margin="48,639.2,48,10.8" Grid.Row="1" FontSize="14" Cursor="Hand" Style="{DynamicResource maxOpacity}">
-            <TextBlock TextDecorations="Underline" 
-                Text="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type Label}, Mode=FindAncestor}}" />
-        </Label>
-        <Label x:Name="loginLabel" Content="Логин" Height="31" Margin="30,349.2,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-        <TextBox x:Name="loginInput" Height="35" Margin="30,380.2,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
+        <Button x:Name="regBtn" Content="Зарегистрироваться" Margin="48,0,48,22.8" FontSize="16" Background="#FF305174" Foreground="White" BorderBrush="{x:Null}" Style="{DynamicResource RoundYgl}" Cursor="Hand" Grid.Row="1" Height="42" VerticalAlignment="Bottom" Click="regBtn_Click"/>
+        <Label x:Name="loginLabel" Content="Логин" Height="31" Margin="30,315.2,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+        <TextBox x:Name="loginInput" Height="35" Margin="30,346.2,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type TextBox}">
                     <Setter Property="Opacity" Value="0.6"/>
@@ -175,8 +170,8 @@
                 <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
             </TextBox.Background>
         </TextBox>
-        <Label x:Name="addressLabel" Content="Адрес" Height="31" Margin="30,204.2,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-        <TextBox x:Name="addressInput" Height="35" Margin="30,235.2,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
+        <Label x:Name="addressLabel" Content="Адрес" Height="31" Margin="30,170.2,30,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+        <TextBox x:Name="addressInput" Height="35" Margin="30,201.2,30,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" BorderThickness="2" Template="{DynamicResource inputBtn}" VerticalContentAlignment="Center" FontSize="15" Padding="10,1,1,1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type TextBox}">
                     <Setter Property="Opacity" Value="0.6"/>
@@ -201,6 +196,11 @@
                 <SolidColorBrush Opacity="0.2" Color="#FFA4A4A4"/>
             </TextBox.Background>
         </TextBox>
+        <Label x:Name="RoleLabel" Content="Роль:" Height="36" Margin="30,553.2,313,0" Grid.Row="1" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+        <StackPanel HorizontalAlignment="Left" Height="36" Margin="92,0,0,90.8" Grid.Row="1" VerticalAlignment="Bottom" Width="278">
+            <RadioButton x:Name="AdministatorRadio" Content="Administrator" Foreground="#FFF1F1F1"/>
+            <RadioButton x:Name="ManagerRadio" Content="Manager" Foreground="#FFF1F1F1"/>
+        </StackPanel>
     </Grid>
     <Window.Resources>
 

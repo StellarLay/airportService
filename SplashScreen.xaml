@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportService"
         mc:Ignorable="d"
-        Title="SplashScreen" Height="392.518" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Foreground="{x:Null}" AllowsTransparency="True">
+        Title="SplashScreen" Height="392.518" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Foreground="{x:Null}" AllowsTransparency="True" Icon="resources/trayIcon.png">
     <Window.Background>
         <SolidColorBrush Color="#FF1F3144"/>
     </Window.Background>

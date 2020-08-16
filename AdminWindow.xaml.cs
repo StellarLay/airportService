@@ -19,6 +19,8 @@ namespace AirportService
     /// </summary>
     public partial class AdminWindow : Window
     {
+        AirportServiceEntities dataEntities = new AirportServiceEntities();
+
         public AdminWindow()
         {
             InitializeComponent();
@@ -56,18 +58,56 @@ namespace AirportService
             itemImg2.Foreground = System.Windows.Media.Brushes.White;
         }
 
+        string type = "";
         // Клик на 1-й итем
         private void item1_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            rectangleItem1.Visibility = Visibility.Visible;
+            rectangleItem2.Visibility = Visibility.Hidden;
             BtnsStackPanel.Visibility = Visibility.Visible;
             StatisticOneGrid.Visibility = Visibility.Hidden;
+            StatisticHeadLabel.Content = "";
+            type = "";
+            FromStatisticPicker.SelectedDate = null;
+            ToStatisticPicker.SelectedDate = null;
+            flightLabelStatistic.Text = "";
+            EmployeesGrid.Visibility = Visibility.Hidden;
+        }
+
+        // Клик на 2-й итем
+        private void item2_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            rectangleItem1.Visibility = Visibility.Hidden;
+            rectangleItem2.Visibility = Visibility.Visible;
+            BtnsStackPanel.Visibility = Visibility.Hidden;
+            EmployeesGrid.Visibility = Visibility.Visible;
+            StatisticHeadLabel.Content = "Сотрудники";
+
+            // Loading grid
+            var query = from users in dataEntities.Employees
+                        join roles in dataEntities.Roles on users.roleId equals roles.Id
+                        select new
+                        {
+                            Номер = users.id,
+                            Фамилия = users.lastname,
+                            Имя = users.firstname,
+                            Должность = roles.name,
+                            Логин = users.login,
+                            Пароль = users.password
+                        };
+            EmployeesDataGrid.ItemsSource = query.ToList();
         }
 
         // Клик на кнопку "Количество билетов по рейсам"
         private void StatisticOneBtn_Click(object sender, RoutedEventArgs e)
         {
+            FlightLabelStatistic.Visibility = Visibility.Visible;
+            flightLabelStatistic.Visibility = Visibility.Visible;
             BtnsStackPanel.Visibility = Visibility.Hidden;
             StatisticOneGrid.Visibility = Visibility.Visible;
+            ResultStatisticLabel.Content = "";
+            StatisticHeadLabel.Content = "Количество билетов по рейсам";
+            type = "statisticOne";
         }
 
         // Иконка "Выход"
@@ -82,6 +122,118 @@ namespace AirportService
                 this.Close();
                 form.Show();
             }
+        }
+
+        // Кнопка "Применить"
+        private void ApplyStatisticBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(flightLabelStatistic.Text == "" ||
+                FromStatisticPicker.SelectedDate == null ||
+                ToStatisticPicker.SelectedDate == null)
+            {
+                MessageBox.Show("Заполните фильтр!");
+            }
+            else
+            {
+                if(type == "statisticOne")
+                {
+                    int flightNumber = Convert.ToInt32(flightLabelStatistic.Text);
+                    var startDate = new DateTime(FromStatisticPicker.SelectedDate.Value.Ticks, DateTimeKind.Unspecified).Date;
+                    var endDate = new DateTime(ToStatisticPicker.SelectedDate.Value.Ticks, DateTimeKind.Unspecified).Date;
+                    var item = dataEntities.Tickets.Where(w => w.flight == flightNumber && w.date > startDate && w.date < endDate);
+
+                    ResultStatisticLabel.Content = "Количество проданных билетов на рейс " + flightNumber + " : " + item.Count();
+                }
+                else
+                {
+                    var startDate = new DateTime(FromStatisticPicker.SelectedDate.Value.Ticks, DateTimeKind.Unspecified).Date;
+                    var endDate = new DateTime(ToStatisticPicker.SelectedDate.Value.Ticks, DateTimeKind.Unspecified).Date;
+                    var item = dataEntities.Tickets.Where(w => w.date > startDate && w.date < endDate);
+
+                    ResultStatisticLabel.Content = "проданных билетов на заданный период: " + item.Count();
+                }
+            }
+        }
+
+        // Количество проданных авиабилетов
+        private void StatisticTwoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            type = "statisticTwo";
+            FlightLabelStatistic.Visibility = Visibility.Hidden;
+            flightLabelStatistic.Visibility = Visibility.Hidden;
+
+            BtnsStackPanel.Visibility = Visibility.Hidden;
+            StatisticOneGrid.Visibility = Visibility.Visible;
+            ResultStatisticLabel.Content = "";
+            StatisticHeadLabel.Content = "Количество проданных авиабилетов";
+        }
+
+        int userId = 0;
+
+        // Кнопка "Добавить сотрудника"
+        private void AddEmployBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Registration form = new Registration();
+            form.Show();
+        }
+
+        // Кнопка "Удалить сотрудника"
+        private void DeleteEmployBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(userId == 0)
+            {
+                MessageBox.Show("Выберите сотрудника!");
+            }
+            else
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить этого сотрудника?",
+                "Сообщение",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Information) == MessageBoxResult.Yes)
+                {
+                    Employees employ = new Employees
+                    {
+                        id = userId
+                    };
+
+                    dataEntities.Employees.Attach(employ);
+                    dataEntities.Employees.Remove(employ);
+                    dataEntities.SaveChanges();
+
+                    MessageBox.Show("Сотрудник успешно удалён");
+                }
+            }
+        }
+
+        private void EmployeesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = EmployeesDataGrid.SelectedItem;
+            if(item == null)
+            {
+                EmployeesDataGrid.SelectedIndex = -1;
+            }
+            else
+            {
+                userId = Convert.ToInt32(item.GetType().GetProperty("Номер").GetValue(item, null));
+            }
+        }
+
+        // Кнопка "Обновить"
+        private void UpdateEmployBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Loading grid
+            var query = from users in dataEntities.Employees
+                        join roles in dataEntities.Roles on users.roleId equals roles.Id
+                        select new
+                        {
+                            Номер = users.id,
+                            Фамилия = users.lastname,
+                            Имя = users.firstname,
+                            Должность = roles.name,
+                            Логин = users.login,
+                            Пароль = users.password
+                        };
+            EmployeesDataGrid.ItemsSource = query.ToList();
         }
     }
 }
